@@ -5,7 +5,7 @@
         <Analysis
         @handleSuccess="handleSuccess"
         @handleError="handleError"
-        
+        @zoomTo="handleZoomTo"
         @zoomTo2="handlezoom2"
        
        />
@@ -222,7 +222,7 @@ map = L.map("map", {
       layersControl: false,
       center: [0.02, 37.8582273],
       // minZoom: 6.5,
-      maxZoom: 20,
+      // maxZoom: 20,
       zoom: 6,
       // measureControl: true,
       // defaultExtentControl: true,
@@ -726,12 +726,39 @@ watch( setSelectedPoint , () => {
   
 })
 const handleZoomTo = () =>{
+  if(group.value !== null)group.value.clearLayers()
+  group.value = L.layerGroup().addTo(map);
+  var  myFGMarker = new L.FeatureGroup();
         var lat = document.getElementById("lat").value;
         var lng = document.getElementById("lng").value;
         map.flyTo(new L.LatLng(lat, lng));
-        map.fitBounds(new L.LatLng(lat, lng), {
-    padding: [50, 50],
+        var geojsonFeature = {
+    "type": "Feature",
+    "properties": {
+        "name": "Coors Field",
+        "amenity": "Baseball Stadium",
+        "popupContent": "This is where the Rockies play!"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": [lat,lng]
+    }
+};
+var studioicon = L.icon({
+                                                iconUrl: "/src/assets/plant.svg",
+                                                iconSize: [30, 30],
+                                                iconAnchor: [15,15]
+                                              });
+
+var zoomed_coord = L.marker([lat,lng], {icon: studioicon})
+zoomed_coord.addTo(group.value)
+zoomed_coord.addTo(myFGMarker)
+
+        map.fitBounds(myFGMarker.getBounds(), {
+    // padding: [50, 50],
   });
+
+  // console.log(map.getBounds().contains(zoomed_coord.getLatLng()), 'very long text')
     } 
  
 
@@ -742,12 +769,55 @@ const handleZoomTo = () =>{
       var search = document.getElementById("coords")
       search.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
-    console.log( [lat,lon], 'enter pressed')
-    map.flyTo(new L.LatLng(lat, lon));
-        map.fitBounds(new L.LatLng(lat, lon).getBounds(), {
+   
+    var coords = [lat,lon]
+    
+    var geojsonFeature = {
+    "type": "Feature",
+    "properties": {
+        "name": "Coors Field",
+        "amenity": "Baseball Stadium",
+        "popupContent": "This is where the Rockies play!"
+    },
+    "geometry": {
+        "type": "Point",
+        "coordinates": coords
+    }
+};
+
+
+     var searched_coord =  L.geoJSON(geojsonFeature, {
+  
+              pointToLayer: function (feature, latlng){
+                // console.log(latlng, 'lat lon')
+
+                var studioicon = L.icon({
+                                                iconUrl: "/src/assets/plant.svg",
+                                                iconSize: [30, 30],
+                                                iconAnchor: [15,15]
+                                              });
+                                          
+            return L.marker(latlng, {icon: studioicon});
+         
+              }
+
+
+        
+          })
+          searched_coord.addTo(map)
+          // map.flyTo(coords)
           
-    padding: [50, 50],
-  });
+         
+ 
+        
+          // map.fitBounds(new L.LatLng(coords).getBoundsZoom(), {
+          //                  padding: [50, 50],
+          //                }); 
+  //   map.flyTo(new L.LatLng(lat, lon));
+  //       map.fitBounds(new L.LatLng(lat, lon), {
+          
+  //   padding: [50, 50],
+  // });
   }
   // do something
 });

@@ -36,7 +36,7 @@
     <!-- <br/> -->
    <label class="lats" for=""> Lon:</label>
      <input type="text" name="lng" id="lng"/>
-    <!-- <input type="button" @click="$emit('zoomTo')" value="Search"/> -->
+    <input type="button" @click="$emit('zoomTo')" value="Search"/>
     </div>
 
 
@@ -226,7 +226,7 @@ top: 26vh;
   top:11.5vh !important;
   font-size: 14px;
   font-weight: 500;
-  z-index: 900;
+  z-index: 200;
   display: flex;
   flex-direction: row;
   gap: 0.2rem;
@@ -236,6 +236,7 @@ input{
     border: 1px solid #C3C8CF;
     border-radius: 5px;
     outline: none;
-    background-color: 'transparent';
+    background-color: 'red';
+
 }
 </style>

@@ -7,7 +7,7 @@
       </select>
 
       <label class="select_location" for="">Select location</label>
-       <div class="enter_location" name="" id="search" > </div>
+       <div class="enter_location" name="" id="search" @keyup="$emit('zoomTo2')" > </div>
       <!-- <select class="enter_location"  @click="storeUserSelections.populateLocations"
        @input="storeUserSelections.saveSelectedLocation"
        >
@@ -28,11 +28,15 @@
        
 
         <button class="biodiversity">Compute score</button>
-        <div class="coordinates">
-      Latitude: <input type="text" name="lat" id="lat"/>
-    <br/>
-    Longitude: <input type="text" name="lng" id="lng"/>
-    <input type="button" @click="$emit('zoomTo')" value="zoomTo"/>
+        <label class="search_coords">Search Coordinates</label>
+        <div class="coordinates" id="coords"  @keyup="$emit('zoomTo2')">
+         
+      <label class="lats" for="">Lat:</label>
+       <input type="text" name="lat" id="lat"/>
+    <!-- <br/> -->
+   <label class="lats" for=""> Lon:</label>
+     <input type="text" name="lng" id="lng"/>
+    <!-- <input type="button" @click="$emit('zoomTo')" value="Search"/> -->
     </div>
 
 
@@ -60,7 +64,7 @@ const storeUserSelections = useCounterStore();
     top:2vw;
 }
 .analyze{
-    height: 35vh;
+    height: 38vh;
     width: 16vw;
     position: absolute;
     left: 4vw;
@@ -102,6 +106,19 @@ const storeUserSelections = useCounterStore();
     width: 85px;
     height: 17px;
     left: 3vw;
+  top: 15vh;
+    font-family: 'SansSerif';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 145.02%;
+    color: #2D4B6A;
+}
+
+.search_coords{
+    position: absolute;
+    
+    left: 3vw;
   top: 9vh;
     font-family: 'SansSerif';
     font-style: normal;
@@ -109,6 +126,15 @@ const storeUserSelections = useCounterStore();
     font-size: 12px;
     line-height: 145.02%;
     color: #2D4B6A;
+}
+.lats{
+    font-family: 'SansSerif';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 145.02%;
+    color: #2D4B6A;
+
 }
 .enter_crop{
     box-sizing: border-box;
@@ -123,7 +149,7 @@ position: absolute;
 width: 173px;
 height: 30px;
 left: 3vw;
-top: 11vh;
+top: 17vh;
 background: #ffffff;
 border: 1px solid #C3C8CF;
 border-radius: 8px;
@@ -134,7 +160,7 @@ cursor: pointer;
 width: 173px;
 height: 30px;
 left: 3vw;
-top: 16vh;
+top: 22vh;
 background: #27AE60;
 border-radius: 8px;
 outline: none;
@@ -148,7 +174,7 @@ cursor: pointer;
 width: 161px;
 height: 30px;
 left: 3vw;
-top: 22vh;
+top: 27vh;
 /* background: #F2F2F2; */
 border-radius: 8px;
 outline: none;
@@ -196,10 +222,20 @@ top: 26vh;
 }
 .coordinates {
  position: absolute;
-  left: 2vw;
-  top: 29.5vh !important;
+  left: 3vw;
+  top:11.5vh !important;
   font-size: 14px;
   font-weight: 500;
   z-index: 900;
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+}
+input{
+    width: 3vw;
+    border: 1px solid #C3C8CF;
+    border-radius: 5px;
+    outline: none;
+    background-color: 'transparent';
 }
 </style>

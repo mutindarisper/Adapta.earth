@@ -5,11 +5,12 @@
         <Analysis
         @handleSuccess="handleSuccess"
         @handleError="handleError"
-        @zoomTo="handleZoomTo"
+        
+        @zoomTo2="handlezoom2"
        
        />
         <div class="info">
-            <!-- <Info /> -->
+            <!-- <Info /> @zoomTo="handleZoomTo"-->
            
 
         </div>
@@ -221,7 +222,7 @@ map = L.map("map", {
       layersControl: false,
       center: [0.02, 37.8582273],
       // minZoom: 6.5,
-      // maxZoom: 20,
+      maxZoom: 20,
       zoom: 6,
       // measureControl: true,
       // defaultExtentControl: true,
@@ -724,7 +725,6 @@ watch( setSelectedPoint , () => {
   getPoints()
   
 })
-
 const handleZoomTo = () =>{
         var lat = document.getElementById("lat").value;
         var lng = document.getElementById("lng").value;
@@ -733,6 +733,40 @@ const handleZoomTo = () =>{
     padding: [50, 50],
   });
     } 
+ 
+
+    const handlezoom2 = (e) => {
+      var lat = document.getElementById("lat").value;
+      var lon = document.getElementById("lng").value;
+
+      var search = document.getElementById("coords")
+      search.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    console.log( [lat,lon], 'enter pressed')
+    map.flyTo(new L.LatLng(lat, lon));
+        map.fitBounds(new L.LatLng(lat, lon).getBounds(), {
+          
+    padding: [50, 50],
+  });
+  }
+  // do something
+});
+     
+   
+      // if (e.keyCode === 13) {
+      //   console.log(lat, 'input lat')
+      //   console.log(lon, 'input lon')
+      // }
+      //  else if (e.keyCode === 50) {
+      //   alert('@ was pressed');
+      // }      
+      
+   
+  //     map.flyTo(new L.LatLng(lat, lng));
+  //       map.fitBounds(new L.LatLng(lat, lng), {
+  //   padding: [50, 50],
+  // });
+    }
 
 
 

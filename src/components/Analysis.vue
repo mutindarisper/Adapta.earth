@@ -28,6 +28,12 @@
        
 
         <button class="biodiversity">Compute score</button>
+        <div class="coordinates">
+      Latitude: <input type="text" name="lat" id="lat"/>
+    <br/>
+    Longitude: <input type="text" name="lng" id="lng"/>
+    <input type="button" @click="$emit('zoomTo')" value="zoomTo"/>
+    </div>
 
 
 
@@ -187,5 +193,13 @@ height: 30px;
 left: 2vw;
 top: 26vh;
 /* background-color: #27AE60; */
+}
+.coordinates {
+ position: absolute;
+  left: 2vw;
+  top: 29.5vh !important;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 900;
 }
 </style>

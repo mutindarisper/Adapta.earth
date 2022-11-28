@@ -5,6 +5,7 @@
         <Analysis
         @handleSuccess="handleSuccess"
         @handleError="handleError"
+        @zoomTo="handleZoomTo"
        
        />
         <div class="info">
@@ -723,6 +724,15 @@ watch( setSelectedPoint , () => {
   getPoints()
   
 })
+
+const handleZoomTo = () =>{
+        var lat = document.getElementById("lat").value;
+        var lng = document.getElementById("lng").value;
+        map.flyTo(new L.LatLng(lat, lng));
+        map.fitBounds(new L.LatLng(lat, lng), {
+    padding: [50, 50],
+  });
+    } 
 
 
 

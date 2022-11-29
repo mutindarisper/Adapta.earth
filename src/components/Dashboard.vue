@@ -731,7 +731,10 @@ const handleZoomTo = () =>{
   var  myFGMarker = new L.FeatureGroup();
         var lat = document.getElementById("lat").value;
         var lng = document.getElementById("lng").value;
-        map.flyTo(new L.LatLng(lat, lng));
+        map.flyTo(new L.LatLng(lat, lng), 10, {
+          animate: true,
+          duration: 5
+        });
         var geojsonFeature = {
     "type": "Feature",
     "properties": {
@@ -751,14 +754,18 @@ var studioicon = L.icon({
                                               });
 
 var zoomed_coord = L.marker([lat,lng], {icon: studioicon})
+var coords = [lat,lng]
+// map.flyTo(coords);
 zoomed_coord.addTo(group.value)
 zoomed_coord.addTo(myFGMarker)
+
+
 
         map.fitBounds(myFGMarker.getBounds(), {
     // padding: [50, 50],
   });
 
-  // console.log(map.getBounds().contains(zoomed_coord.getLatLng()), 'very long text')
+  // console.log(map.getBounds().contains(zoomed_coord.getLatLng()), 'very long text') false
     } 
  
 

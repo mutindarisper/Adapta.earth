@@ -36,7 +36,7 @@
     <!-- <br/> -->
    <label class="lats" for=""> Lon:</label>
      <input type="text" name="lng" id="lng"/>
-    <input type="button" @click="$emit('zoomTo')" value="Search"/>
+    <button class="search_button" type="button" @click="$emit('zoomTo')" value="Search">Search</button>
     </div>
 
 
@@ -51,6 +51,21 @@ const storeUserSelections = useCounterStore();
 </script>
 
 <style scoped>
+.search_button{
+    position: absolute;
+    width: 58px;
+    height: 20px;
+    left: 0vw;
+  top: 3vh;
+  padding-bottom: 10px;
+  background: #27AE60;
+border-radius: 8px;
+outline: none;
+border: none;
+color: #FFFFFF;
+cursor: pointer;
+
+}
 #search{
     border: #C3C8CF 1px solid !important;
     z-index: 500;
@@ -106,7 +121,7 @@ const storeUserSelections = useCounterStore();
     width: 85px;
     height: 17px;
     left: 3vw;
-  top: 15vh;
+  top: 18vh;
     font-family: 'SansSerif';
     font-style: normal;
     font-weight: 600;
@@ -149,7 +164,7 @@ position: absolute;
 width: 173px;
 height: 30px;
 left: 3vw;
-top: 17vh;
+top: 20vh;
 background: #ffffff;
 border: 1px solid #C3C8CF;
 border-radius: 8px;
@@ -160,7 +175,7 @@ cursor: pointer;
 width: 173px;
 height: 30px;
 left: 3vw;
-top: 22vh;
+top: 25vh;
 background: #27AE60;
 border-radius: 8px;
 outline: none;
@@ -174,7 +189,7 @@ cursor: pointer;
 width: 161px;
 height: 30px;
 left: 3vw;
-top: 27vh;
+top: 29vh;
 /* background: #F2F2F2; */
 border-radius: 8px;
 outline: none;

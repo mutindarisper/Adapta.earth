@@ -23,15 +23,15 @@ a {
     /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
     font-weight: 640;
     color: #37c237; }
-    .dash{
+    .home_link{
         color: #0cc05a;
         border-bottom: #9ad299 2px solid;
     }
     .adapta_logo{
-        position: absolute;
+        position: relative;
         width: 216px;
     height: 91px;
-    left: 18px;
+    left:50px !important;
     top: 0.8vh;
     }
 .header{
@@ -94,7 +94,7 @@ color: #fff;
     font-family:'Inter';
 font-style: normal;
 font-weight: 600;
-font-size: 24px;
+font-size: 20px;
 line-height: 29px;
 padding-bottom: 15px;
 
@@ -121,7 +121,7 @@ top: 9vh;
 .benefits{
     position: relative;
     top: 45vh;
-    left: -23vw;
+    left: -14vw;
     font-family: 'Roobert';
 font-style: normal;
 font-weight: 600;
@@ -146,12 +146,13 @@ color: #219653;
     gap: 30rem;
     position: relative;
     top: 48vh;
-    left: -25vw;
+    left: -20vw;
     color: #fff;
     font-family: 'Roobert';
 font-style: normal;
 font-weight: 600;
 font-size: 20px;
+/* background-color: rgb(224, 145, 145); */
 
 }
 #number{
@@ -181,7 +182,7 @@ color: #F3FAF3;
     position: relative
     ;
     top: 52vh;
-    left: -25vw;
+    left: -20vw;
     /* width: 100%; */
  
 font-family: 'Inter';
@@ -283,10 +284,11 @@ font-size: 22px;
 }
 .finance-man{
     width: 420px;
-height: 350px;
+height: 400px;
 border-radius: 40px;
 position: relative
 ;
+top: -4vh;
 left: 30vw;
 }
 .finance-analytics{
@@ -315,7 +317,7 @@ color: #000000;
 }
 .build{
     position: relative;
-    top: 500px;
+    top: 900px;
     background-color: rgb(255, 255, 255);
     height: 50vh;
     
@@ -339,12 +341,15 @@ color: #219653;
     display: flex;
     flex-direction: row;
     gap: 10rem;
+    
+    position: relative;
+    left: 3vw;
 }
 .startups{
     position: relative
     ;
     top: 20px;
-    left: 5vw;
+    left: 8vw;
     height: 40vh;
     width: 18vw;
     background: #F3FAF3;
@@ -355,7 +360,7 @@ border-radius: 22px;
     position: relative
     ;
     top: 20px;
-    left: 7vw;
+    left: 9vw;
     height: 40vh;
     width: 18vw;
     background: #F3FAF3;
@@ -442,11 +447,11 @@ border-radius: 50%;
 }
 .jump{
     position: relative;
-    top: 60vh;
-    left:7vw;
+    top:1000px;
+    left:11vw;
     width: 80vw;
     height: 30vh;
-    background-color: rgb(255, 255, 255);
+    background-color: #FAFCFD;;
     border-radius: 52px;
 }
 .jump_text{
@@ -550,8 +555,8 @@ text-align: center;
 }
 .footer{
     position: relative;
-    top: 60vh;
-    /* left: 3vw; */
+    top:1100px;
+    left: -1vw;
     width: 100%;
     background-color: #FAFCFD;
     display: flex;
@@ -564,6 +569,9 @@ text-align: center;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    position: relative;
+ 
+    left: 3vw;
 }
 .logo{
     width: 216px;
@@ -580,7 +588,7 @@ height: 91px;
     position: relative
     ;
     /* height: 10vh; */
-    top: 60vh;
+    top: 1100px;
     display: flex;
     flex-direction: row;
     /* gap: 8rem; */
@@ -620,4 +628,7 @@ height: 91px;
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    position: relative
+    ;
+    left: 4vw;
 }

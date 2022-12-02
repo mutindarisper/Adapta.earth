@@ -34,14 +34,13 @@
             </div>
         
 
-              
-
-
-   
-
           </div>
           <div class="radial">
               <simpleChartVue />
+          </div>
+
+          <div class="cap">
+              <CAP />
           </div>
 
 
@@ -141,6 +140,7 @@ import simpleChartVue from "./Charts/simpleChart.vue";
 import climateChartVue from "./Charts/climateChart.vue";
 import soilChart from "./Charts/soilChart.vue"
 import WaterChart from './Charts/WaterChart.vue'
+import CAP from "./CAP.vue";
 // import Map from '../components/Map.vue'
 import { useCounterStore } from "../stores/counter";
 
@@ -871,7 +871,7 @@ z-index: 600;
     /* box-sizing: border-box; */
 
 position: absolute;
-width: 35.1vw;
+width: 25.1vw;
 height: 47vh;
 left: 23vw;
 top: 5vh;
@@ -1016,9 +1016,16 @@ height: 192px;
 }
 .radial{
   position: absolute;
-    top: 12vh;
-    left: 70vw;
+    top: 9.5vh;
+    left: 52vw;
     z-index: 1000;
+}
+.cap{
+  position: absolute;
+    top: 2.5vh;
+    left: 38vw;
+    z-index: 1000;
+
 }
 .climate_chart{
   position: absolute;

@@ -21,8 +21,8 @@ body{
 a { 
     text-decoration: none;
     /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
-    font-weight: 640;
-    color: #37c237; }
+    /* font-weight: 640; */
+     }
     .home_link{
         color: #0cc05a;
         border-bottom: #9ad299 2px solid;
@@ -52,7 +52,7 @@ height: 65vh;
 .header-text{
     position: absolute;
 
-left: 5vw;
+left: 4vw;
 top: 10vh;
 
     font-family: 'Roboto';
@@ -67,7 +67,7 @@ color: #000000;
     position: absolute;
 width: 650px;
 height: 105px;
-left: 5vw;
+left: 4vw;
 top: 302px;
     font-family: 'Inter';
 font-style: normal;
@@ -209,6 +209,7 @@ font-size: 20px;
     top:900px;
     background-color: #f5f5f5;
     height: 2000px;
+    background: url('/src/assets/screenshot.png');
 }
 .leading{
     position: relative;
@@ -243,7 +244,8 @@ color: #219653;
     left: 7vw;
     display: flex;
     flex-direction: row;
-    gap: 7rem;
+    /* gap: 2rem; */
+    
     
 
 }
@@ -251,7 +253,17 @@ color: #219653;
     width: 420px;
 height: 350px;
 border-radius: 40px;
+box-shadow: 0px 29px 38px rgba(61, 177, 64, 0.22), 0px 14.6812px 16.5656px rgba(61, 177, 64, 0.1485), 0px 5.8px 6.175px rgba(61, 177, 64, 0.11), 0px 1.26875px 2.19688px rgba(61, 177, 64, 0.0715);
 
+}
+.leaves{
+    position: relative;
+    top: 20vh;
+    left: -10vw;
+    width: 300px;
+    height: 300px;
+
+/* transform: rotate(180deg); */
 }
 .onboard{
     font-family: 'Roobert';
@@ -283,13 +295,26 @@ font-size: 22px;
 
 }
 .finance-man{
-    width: 420px;
-height: 400px;
+    width: 380px;
+height: 300px;
 border-radius: 40px;
 position: relative
 ;
-top: -4vh;
-left: 30vw;
+top: -12vh;
+left: 20vw;
+z-index: 100;
+box-shadow: 0px 29px 38px rgba(61, 177, 64, 0.22),
+ 0px 14.6812px 16.5656px rgba(61, 177, 64, 0.1485), 0px 5.8px 6.175px rgba(61, 177, 64, 0.11), 0px 1.26875px 2.19688px rgba(61, 177, 64, 0.0715);
+}
+.finance_leaves{
+    position: relative;
+top: 2vh;
+left: 10vw;
+    width: 300px;
+    height: 300px;
+
+transform: rotate(180deg);
+z-index: 90;
 }
 .finance-analytics{
     font-family: 'Roobert';

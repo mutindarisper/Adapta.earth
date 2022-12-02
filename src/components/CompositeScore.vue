@@ -165,12 +165,12 @@ watch(updateScore)
     box-sizing: border-box;
 
 
-width: 35vw;
+width: 24vw;
 height: 47vh;
 
 
 position: absolute;
-    left: 61vw;
+    left: 50vw;
     top: 5vh;
     z-index:500;
 
@@ -184,7 +184,7 @@ border-radius: 9px;
  }
  .composite_score{
     position: absolute;
-    left: 12.5vw;
+    left: 5.5vw;
     top: 3vh;
     box-shadow: 0px 29px 38px rgba(61, 177, 64, 0.22), 0px 14.6812px 16.5656px rgba(61, 177, 64, 0.1485), 0px 5.8px 6.175px rgba(61, 177, 64, 0.11), 0px 1.26875px 2.19688px rgba(61, 177, 64, 0.0715);
     width: 174px;

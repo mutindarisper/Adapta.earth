@@ -12,6 +12,7 @@
     "BetterWMS": "git+https://github.com/jfaraklit/BetterWMS.git",
     "apexcharts": "^3.36.3",
     "chart.js": "^3.9.1",
+    "chartjs-gauge": "^0.3.0",
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
     "jquery": "^3.6.1",

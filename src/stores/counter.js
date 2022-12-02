@@ -27,7 +27,7 @@ export const useCounterStore = defineStore({
 
 
     coords:[],
-    gray_index: null,
+    gray_index:null,
     band_2: null,
     band_3: null,
     band_4: null,

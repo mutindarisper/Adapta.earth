@@ -9,7 +9,8 @@
         </p>
 
         <p class="cap_credit">
-            Your Credit Score is <span class="score">66%</span> 
+            Your Credit Score is <span class="score">{{store.gray_index * 100 ? store.gray_index.toFixed(2) * 100+'%' :  '0%'}}</span> 
+       
         </p>
         <p class="intro">
             You have a fair credit score. The below factors
@@ -49,6 +50,10 @@ composite credit score will improve.</p>
 
 
 <script setup>
+import { useCounterStore } from '../stores/counter';
+const store = useCounterStore();
+var score = store.gray_index
+console.log(score, 'cap score')
 </script>
 
 
@@ -60,7 +65,7 @@ width: 380px;
 height: 445px;
 background: #ffffff;
 border: 1px solid #E7E6E8;
-padding: 30px;
+padding: 10px 80px 30px 20px !important;
 border-radius: 10px;
 }
 .cap_title{
@@ -166,6 +171,7 @@ font-weight: 600;
     flex-direction: column;
     gap: 1rem;
     line-height: 125.52%;
+    padding-right: 20px;
 
 }
 .note{

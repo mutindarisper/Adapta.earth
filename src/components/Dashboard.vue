@@ -47,6 +47,10 @@
           <!-- <div id="findbox"></div> -->
           
         <CompositeScoreVue />
+        <div class="needle">
+          <key />
+        </div>
+        
         <div class="biodiversity" >
             <TemperatureScore />
             <div class="climate_chart">
@@ -141,6 +145,9 @@ import climateChartVue from "./Charts/climateChart.vue";
 import soilChart from "./Charts/soilChart.vue"
 import WaterChart from './Charts/WaterChart.vue'
 import CAP from "./CAP.vue";
+import NeedleChart from "./Charts/NeedleChart.vue";
+import speedometer from "./Charts/speedometer.vue";
+import key from "./key.vue";
 // import Map from '../components/Map.vue'
 import { useCounterStore } from "../stores/counter";
 
@@ -859,8 +866,8 @@ zoomed_coord.addTo(myFGMarker)
 }
 .spinner{
 position: absolute;
-left: 38vw;
-top: 19vh;
+left: 32vw;
+top: 22vh;
 /* width: 200px;
 height: 200px;
 background-color: #fff; */
@@ -1017,8 +1024,15 @@ height: 192px;
 .radial{
   position: absolute;
     top: 12vh;
-    left: 52vw;
+    left: 53vw;
     z-index: 1000;
+}
+.needle{
+  position: relative;
+    top: 15vh;
+    left: 58vw;
+    z-index: 2500;
+
 }
 .cap{
   position: absolute;

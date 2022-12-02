@@ -140,7 +140,7 @@ watch(updateScore)
     box-sizing: border-box;
 
 
-    width: 28vw;
+    width: 23vw;
 height: 21.1vh;
 
 

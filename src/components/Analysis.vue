@@ -79,7 +79,7 @@ cursor: pointer;
     top:2vw;
 }
 .analyze{
-    height: 38vh;
+    height: 40vh;
     width: 16vw;
     position: absolute;
     left: 4vw;

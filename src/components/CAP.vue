@@ -8,10 +8,12 @@
             Detailed Credit Report Analysis
         </p>
 
-        <p class="cap_credit">
-            Your Credit Score is <span class="score">{{store.gray_index * 100 ? store.gray_index.toFixed(2) * 100+'%' :  '0%'}}</span> 
-       
+        <p class="cap_credit" v-if="(store.gray_index >= 0)">
+            Your Credit Score is <span v-if="(store.gray_index >= 0)" class="score">{{store.gray_index * 100 ? store.gray_index.toFixed(3) * 100+'%' :  '0%' }}</span> 
+           
         </p>
+        <span class="cap_credit" style="color:#f00; font-weight:700;font-size:15px; " v-if="(store.gray_index == -9999)">Area does not pass biodiversity check</span>
+       
         <p class="intro">
             You have a fair credit score. The below factors
             are informative and they represent areas which
@@ -72,9 +74,9 @@ border-radius: 10px;
     position: absolute;
     top: 0.5vh;
     left: 1vw;
-font-family: 'Inter';
+
 font-style: normal;
-font-weight: 800;
+font-weight: 700;
 font-size: 17px;
 line-height: 145.02%;
 
@@ -90,9 +92,9 @@ color: #447087;
     position: absolute;
     top: 3.5vh;
     left: 1vw;
-    font-family: 'Inter';
+    
 font-style: normal;
-font-weight: 700;
+font-weight: 600;
 font-size: 16px;
 line-height: 145.02%;
 /* or 23px */
@@ -106,7 +108,7 @@ color: #447087;
     position: absolute;
     top: 6vh;
     left: 1vw;
-    font-family: 'Inter';
+    /*  */
 font-style: normal;
 font-weight: 600;
 font-size: 15px;
@@ -120,7 +122,7 @@ color: #2D4B6A;
 }
 .score{
   color: #85C984;
-  font-family: 'Inter';
+  
 font-style: normal;
 font-weight: 600;
 font-size: 18px;
@@ -131,10 +133,10 @@ line-height: 145.02%;
     top: 10vh;
     left: 1vw;
     
-font-family: 'Inter';
+
 font-style: normal;
 font-weight: 500;
-font-size: 18px;
+font-size: 16px;
 line-height: 135.52%;
 /* or 23px */
 
@@ -185,14 +187,14 @@ font-weight: 600;
 }
 .note_text{
     color: #85C984;
-    font-family: 'Inter';
+    
 font-style: normal;
-font-weight: 800;
+font-weight: 600;
 font-size: 18px;
 /* line-height: 175.52%; */
 }
 .note_summary{
-    font-family: 'Inter';
+    
 font-style: normal;
 font-weight: 700;
 font-size: 14px;

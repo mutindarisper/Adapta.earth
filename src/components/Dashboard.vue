@@ -990,20 +990,20 @@ height: 192px;
 }
 .biodiversity{
     position: absolute;
-    left:4vw;
+    left:23vw;
     top: 66vh;
     z-index:500;
    
 }
 .climate{
     position: absolute;
-    left: 36vw;
+    left: 50vw;
     top: 66vh;
     z-index:500;
 }
 .soil{
     position: absolute;
-    left: 68vw;
+    left: 75.6vw;
     top: 66vh;
     z-index:500;
 }
@@ -1016,7 +1016,7 @@ height: 192px;
 }
 .radial{
   position: absolute;
-    top: 9.5vh;
+    top: 12vh;
     left: 52vw;
     z-index: 1000;
 }
@@ -1048,7 +1048,7 @@ height: 192px;
 .notification {
   position: absolute;
   top: 56vh;
-  left: 37vw;
+  left: 49vw;
   z-index: 1000;
   width: 25vw;
   height: 8vh;

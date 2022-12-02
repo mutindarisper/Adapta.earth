@@ -133,7 +133,7 @@ return {
  }
  .composite{
     box-sizing: border-box;
-    width: 28vw;
+    width: 22vw;
 height: 21.1vh;
 background: #FFFFFF;
 border: 1px solid #E7E6E8;

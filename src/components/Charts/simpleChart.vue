@@ -68,7 +68,7 @@
               toolbar: {
                 show: true,
                 tools: {
-            download: '<img src="download.svg" title="Download chart" />',
+            download: '<img src="download.svg" title="Download chart" position="abosolute;" top="1vh" left="5vw" />',
         
         }
 
@@ -76,8 +76,8 @@
             },
             plotOptions: {
               radialBar: {
-                startAngle: -135,
-                endAngle: 225,
+                startAngle: -150,
+                endAngle: 150,
                  hollow: {
                   margin: 0,
                   size: '70%',
@@ -86,6 +86,7 @@
                   imageOffsetX: 0,
                   imageOffsetY: 0,
                   position: 'front',
+                  
                   dropShadow: {
                     enabled: true,
                     top: 3,
@@ -95,11 +96,11 @@
                   }
                 },
                 track: {
-                  background: '#00000000',
+                  background: '#f5f5f5',
                   strokeWidth: '67%',
                   margin: 0, // margin is in pixels
                   dropShadow: {
-                    enabled: true,
+                    enabled: false,
                     top: -3,
                     left: 0,
                     blur: 4,
@@ -129,6 +130,29 @@
                 }
               }
             },
+            
+markers: {
+    size: 20,
+    colors: 'red',
+    // strokeColors: '#000',
+    // strokeWidth: 2,
+    // strokeOpacity: 0.9,
+    // strokeDashArray: 0,
+    // fillOpacity: 1,
+    // discrete: [],
+    // shape: "circle",
+    // radius: 20,
+    // offsetX: 0,
+    // offsetY: 0,
+    // onClick: undefined,
+    // onDblClick: undefined,
+    // showNullDataPoints: true,
+    // hover: {
+    //   size: undefined,
+    //   sizeOffset: 3
+    // }
+},
+
             fill: {
               type: 'gradient',
               gradient: {

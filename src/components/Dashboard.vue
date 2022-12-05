@@ -47,7 +47,7 @@
           <!-- <div id="findbox"></div> -->
           
         <CompositeScoreVue />
-        <div class="needle">
+        <div class="needle" v-if="store.gray_index !=null">
           <key />
         </div>
         

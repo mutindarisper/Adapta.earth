@@ -40,35 +40,38 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 padding: 7px 17px;
-gap: 7px;
+gap: -1rem;
 background: #F5F5F5;
 width: 100%;
 position: absolute;
 top: 0;
 left: 0;
-height: 65vh;
+height: 73vh;
 
 }
 .header-text{
     position: absolute;
 
-left: 4vw;
+left: 7vw;
 top: 10vh;
 
     font-family: 'Roboto';
 font-style: normal;
 font-weight: 700;
-font-size: 48px;
-line-height: 113.02%;
+font-size: 58px;
+line-height: 125.02%;
 color: #000000;
+
+
+
 
 }
 .text-2{
     position: absolute;
 width: 650px;
 height: 105px;
-left: 4vw;
-top: 302px;
+left: 7vw;
+top: 350px;
     font-family: 'Inter';
 font-style: normal;
 font-weight: 500;
@@ -79,8 +82,8 @@ line-height: 145.02%;
     position: absolute;
 width: 161px;
 height: 57px;
-left: 5vw;
-top: 500px;
+left: 7vw;
+top: 550px;
 background: #27AE60;
 border-radius: 53px;
 border: none;
@@ -110,9 +113,9 @@ flex-grow: 0;
 }
 .avatar{
     position: relative;
-    width: 750px;
-height:700px;
-left:69vw;
+    width: 2050px !important;
+height:850px;
+left:65vw;
 top: 9vh;
 /* background-color: rgb(201, 57, 57); */
 
@@ -120,8 +123,8 @@ top: 9vh;
 }
 .benefits{
     position: relative;
-    top: 45vh;
-    left: -14vw;
+    top: 47vh;
+    left: -19vw;
     font-family: 'Roobert';
 font-style: normal;
 font-weight: 600;
@@ -143,10 +146,10 @@ color: #219653;
 .numbers{
     display: flex;
     flex-direction: row;
-    gap: 30rem;
+    gap: 35rem;
     position: relative;
-    top: 48vh;
-    left: -20vw;
+    top: 47vh;
+    left: -27vw;
     color: #fff;
     font-family: 'Roobert';
 font-style: normal;
@@ -181,8 +184,9 @@ color: #F3FAF3;
 .flex-text{
     position: relative
     ;
-    top: 52vh;
-    left: -20vw;
+    top: 48vh;
+    left: -27vw;
+    /* background-color: rgb(214, 79, 79); */
     /* width: 100%; */
  
 font-family: 'Inter';
@@ -198,11 +202,11 @@ font-size: 20px;
 }
 .provide{
     position: relative;
-    left: 5vw;
+    left: 10vw;
 }
 .save{
     position: relative;
-    left: 8vw;
+    left: 17vw;
 }
 .solution{
     position: relative;

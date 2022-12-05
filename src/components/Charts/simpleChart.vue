@@ -68,7 +68,8 @@
               toolbar: {
                 show: true,
                 tools: {
-            download: '<img src="download.svg"  />',
+            download: '<img src="download.svg" title="Download chart" />',
+        
         }
 
               }

@@ -66,8 +66,12 @@
                height: 350,
                type: 'radialBar',
                toolbar: {
-                 show: true
-               }
+                show: true,
+                tools: {
+            download: '<img src="download.svg"  />',
+        }
+
+              }
              },
              plotOptions: {
                radialBar: {

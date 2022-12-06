@@ -33,6 +33,32 @@
               <div class="separate"></div>
               <img src="../assets/zoomout.svg" class="zoomout" @click="zoom_out" alt="">
             </div>
+
+            <div class="basemaps">
+          <img
+            src="../assets/layers.svg"
+            alt=""
+            @mouseover="base_map_ctrl_selections = true"
+            @mouseleave="handle_baseLayers"
+          />
+        </div>
+
+        <div
+        class="base_map_ctrl_selections"
+        v-if="base_map_ctrl_selections"
+        @mouseover="
+          (base_map_ctrl_selections = true), (base_map_ctrl_cliked = true)
+        "
+        @mouseleave="
+          (base_map_ctrl_selections = false), (base_map_ctrl_cliked = false)
+        "
+      >
+        <div v-for="base_map in Object.keys(baseMaps)" :key="base_map">
+          <div class="base_map" @click="change_base_map(base_map)">
+            <div class="base_map_name">{{ base_map }}</div>
+          </div>
+        </div>
+      </div>
         
 
           </div>
@@ -176,6 +202,7 @@ let latlon = ref(null)
 let marker = ref(null)
 let group = ref(null)
 let editableLayers = ref(null) //draw control
+let base_map_ctrl_selections= ref(false) 
 
 const notification = useNotification()
 notification.notify({
@@ -242,10 +269,10 @@ map = L.map("map", {
 
     L.control.layers(baseMaps.value).addTo(map);
      ///////////////////hide layers control
-    //  var layerControl = document.getElementsByClassName(
-    //   "leaflet-control-layers"
-    // );
-    // layerControl[0].style.visibility = "hidden";
+     var layerControl = document.getElementsByClassName(
+      "leaflet-control-layers"
+    );
+    layerControl[0].style.visibility = "hidden";
 
     map.createPane("pane800").style.zIndex = 500;
 
@@ -672,6 +699,22 @@ const zoom_in = () => {
       map.setZoom(map.getZoom() - 1);
     }
 
+    const handle_baseLayers = () => {
+      setTimeout(() => {
+        if (this.base_map_ctrl_cliked === false)
+          this.base_map_ctrl_selections = false;
+      }, 500);
+    }
+
+   const change_base_map = (base_map) =>{
+      const index = Object.keys(baseMaps.value).indexOf(base_map);
+
+      let layerControlElement = document.getElementsByClassName(
+        "leaflet-control-layers"
+      )[0];
+      layerControlElement.getElementsByTagName("input")[index].click();
+    }
+
     const getPoints = () => {
       //var selected_points =[] //store.selectedData.y, store.selectedData.x]
       var selected_points = store.getSelectedCoords
@@ -937,6 +980,39 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   
  
 }
+.basemaps{
+      z-index: 1500;
+      position: absolute;
+      top: 22vh;
+      width: 27.5px;
+      right:0.6vw;
+      cursor: pointer;
+      padding-bottom: 0px;
+      padding-left: 0px;
+background-color: rgb(255, 255, 255);
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+    }
+
+    .base_map_ctrl_selections {
+      position: absolute;
+      z-index: 401;
+      /* margin-top: 5%; */
+      top: 22vh;
+      right:2.5vw;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      padding: 5px;
+      
+    }
+    .base_map_name {
+      font-size: 15px;
+      cursor: pointer;
+      border-bottom: #a8a8a8 solid 3px;
+    }
+    .base_map_name:hover {
+      background-color: #84f8c2;
+    }
 
 .zoom_controls1{
   z-index: 500;

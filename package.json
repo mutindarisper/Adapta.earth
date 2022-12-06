@@ -19,6 +19,7 @@
     "jquery": "^3.6.1",
     "leaflet": "^1.9.2",
     "leaflet-control-geocoder": "^2.4.0",
+    "leaflet-draw": "^1.0.4",
     "leaflet-geosearch": "^3.7.0",
     "leaflet-search": "^3.0.3",
     "leaflet.wms": "^0.2.0",

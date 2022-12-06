@@ -77,7 +77,7 @@
             plotOptions: {
               radialBar: {
                 startAngle: -150,
-                endAngle: 150,
+                endAngle:150,
                  hollow: {
                   margin: 0,
                   size: '70%',

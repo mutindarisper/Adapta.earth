@@ -94,11 +94,11 @@
                    }
                  },
                  track: {
-                   background: '#00000000',
+                  background: '#f5f5f5',
                    strokeWidth: '67%',
                    margin: 0, // margin is in pixels
                    dropShadow: {
-                     enabled: true,
+                     enabled: false,
                      top: -3,
                      left: 0,
                      blur: 4,

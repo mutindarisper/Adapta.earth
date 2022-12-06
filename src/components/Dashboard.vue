@@ -23,7 +23,8 @@
         
           <div id="map">
             <!-- <h2 class="zoom_controls1">{{store.getSelectedCoords}}</h2> " -->
-            <img src="../assets/draw.svg" class="draw" alt="">
+            <img src="../assets/draw.svg" class="draw" id="draw_polygon" alt="" @click="addDrawCtrl">
+            <img src="../assets/plus.svg" class="plus" alt="">
             <img src="../assets/publish.svg" class="upload" alt="">
             <img src="../assets/download.svg" alt="" class="download" @click="screenshot">
 
@@ -126,6 +127,8 @@ import { saveAs } from 'file-saver';
 import { useNotification } from "@kyvg/vue3-notification";
 import { GeoSearchControl, OpenStreetMapProvider }  from "leaflet-geosearch"
 import "leaflet-geosearch/dist/geosearch.css"
+import "leaflet-draw/dist/leaflet.draw-src.css";
+import "leaflet-draw";
 import { onMounted, ref, watch, computed} from 'vue';
 
 
@@ -150,7 +153,7 @@ import speedometer from "./Charts/speedometer.vue";
 import key from "./key.vue";
 // import Map from '../components/Map.vue'
 import { useCounterStore } from "../stores/counter";
-
+window.type = true;
 
 const store = useCounterStore()
 
@@ -172,6 +175,7 @@ let band4 = ref(null)
 let latlon = ref(null)
 let marker = ref(null)
 let group = ref(null)
+let editableLayers = ref(null) //draw control
 
 const notification = useNotification()
 notification.notify({
@@ -610,29 +614,29 @@ watch( setSelectedCrop , () => {
 
 
 
-const geocoderFn = () => {
-  var geocoder = L.Control.geocoder({
-  defaultMarkGeocode: false,
-  position: 'topright',
-  container:'findbox'
-  // className:'searchbox'
-})
-  .on('markgeocode',  function(e) {
-    var bbox = e.geocode.bbox;
-    var poly = L.polygon([
-      bbox.getSouthEast(),
-      bbox.getNorthEast(),
-      bbox.getNorthWest(),
-      bbox.getSouthWest()
-    ]).addTo(map);
-    console.log(e.geocode, 'geocode result')
-    map.fitBounds(poly.getBounds());
-  //I'll use zoom controls to zoom in
+// const geocoderFn = () => {
+//   var geocoder = L.Control.geocoder({
+//   defaultMarkGeocode: false,
+//   position: 'topright',
+//   container:'findbox'
+//   // className:'searchbox'
+// })
+//   .on('markgeocode',  function(e) {
+//     var bbox = e.geocode.bbox;
+//     var poly = L.polygon([
+//       bbox.getSouthEast(),
+//       bbox.getNorthEast(),
+//       bbox.getNorthWest(),
+//       bbox.getSouthWest()
+//     ]).addTo(map);
+//     console.log(e.geocode, 'geocode result')
+//     map.fitBounds(poly.getBounds());
+//   //I'll use zoom controls to zoom in
    
-  })
+//   })
   
-  .addTo(map);
-}
+//   .addTo(map);
+// }
 
 
 
@@ -776,82 +780,66 @@ zoomed_coord.addTo(myFGMarker)
     } 
  
 
-    const handlezoom2 = (e) => {
-      var lat = document.getElementById("lat").value;
-      var lon = document.getElementById("lng").value;
+    const addDrawCtrl = () => {
+      //we add the polygon draw feature to map as seen  below
+      editableLayers.value = new L.FeatureGroup();
+      map.addLayer(editableLayers.value);
+      let options = {
+        position: "topright",
+        draw: {
+          polyline: false,
+          polygon: {
+            allowIntersection: false, // Restricts shapes to simple polygons
+            showArea: true,
+            drawError: {
+              color: "#e1e100", // Color the shape will turn when intersects
+              message: "<strong>Oh snap!<strong> you can't draw that!", // Message that will show when intersect
+            },
+            shapeOptions: {
+              color: "black",
+              fillColor: "none",
+            },
+          },
+          circle: false, // Turns off this drawing tool
+          rectangle: false,
+          marker: false,
+          circlemarker: false,
+        },
+        edit: {
+          featureGroup: editableLayers.value, //REQUIRED!!
+          edit: {},
+        },
+      };
+      let drawControl = new L.Control.Draw(options);
+      map.addControl(drawControl);
 
-      var search = document.getElementById("coords")
-      search.addEventListener("keyup", (event) => {
-  if (event.keyCode === 13) {
-   
-    var coords = [lat,lon]
-    
-    var geojsonFeature = {
-    "type": "Feature",
-    "properties": {
-        "name": "Coors Field",
-        "amenity": "Baseball Stadium",
-        "popupContent": "This is where the Rockies play!"
-    },
-    "geometry": {
-        "type": "Point",
-        "coordinates": coords
-    }
-};
+      map.on(L.Draw.Event.CREATED, (e) => {
+        const layer = e.layer;
+        editableLayers.value.addLayer(layer);
+        // if (process.env.DEV)
+        //   console.log(JSON.stringify(layer.toGeoJSON().geometry));
+      });
 
-
-     var searched_coord =  L.geoJSON(geojsonFeature, {
-  
-              pointToLayer: function (feature, latlng){
-                // console.log(latlng, 'lat lon')
-
-                var studioicon = L.icon({
-                                                iconUrl: "/src/assets/plant.svg",
-                                                iconSize: [30, 30],
-                                                iconAnchor: [15,15]
-                                              });
-                                          
-            return L.marker(latlng, {icon: studioicon});
-         
-              }
-
-
-        
-          })
-          searched_coord.addTo(map)
-          // map.flyTo(coords)
-          
-         
- 
-        
-          // map.fitBounds(new L.LatLng(coords).getBoundsZoom(), {
-          //                  padding: [50, 50],
-          //                }); 
-  //   map.flyTo(new L.LatLng(lat, lon));
-  //       map.fitBounds(new L.LatLng(lat, lon), {
-          
-  //   padding: [50, 50],
-  // });
-  }
-  // do something
-});
-     
-   
-      // if (e.keyCode === 13) {
-      //   console.log(lat, 'input lat')
-      //   console.log(lon, 'input lon')
-      // }
-      //  else if (e.keyCode === 50) {
-      //   alert('@ was pressed');
-      // }      
-      
-   
-  //     map.flyTo(new L.LatLng(lat, lng));
-  //       map.fitBounds(new L.LatLng(lat, lng), {
-  //   padding: [50, 50],
-  // });
+    map.on(L.Draw.Event.EDITSTOP, (e) => {
+        // if (process.env.DEV) console.log("stop edit", e);
+      });
+      map.on(L.Draw.Event.DELETED, (e) => {
+        // if (process.env.DEV) console.log(" deleted ", e);
+        //remove the control from map and remove focus on the draw icon by changing color
+        // draw_polygon();
+        document.getElementById("draw_polygon").style.backgroundColor = "white";
+      });
     }
 
+
+    // document
+    //   .getElementById("draw_polygon")
+    //   .addEventListener("click", (e) => {
+    //     console.log("click ");
+        
+    //     addDrawCtrl();
+    //     // draw_polygon();
+    //   });
 
 
 
@@ -891,9 +879,21 @@ z-index: 400;
   position: absolute;
   z-index: 600;
   right:0.7vw;
-top: 24vh;
-padding: 7px;
+top: 30vh;
+padding: 4px;
 background-color: #fff;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  cursor: pointer;
+
+}
+.plus{
+  position: absolute;
+  z-index: 600;
+  right:0.7vw;
+top: 30.08vh;
+/* padding: 6px; */
+
 box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 6px;
   cursor: pointer;
@@ -903,7 +903,7 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   position: absolute;
   z-index: 600;
   right:0.6vw;
-top: 29vh;
+top: 34vh;
 padding: 5px;
 background-color: #fff;
 box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
@@ -914,8 +914,8 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   position: absolute;
   z-index: 600;
   right:0.6vw;
-top: 18vh;
-padding: 5px;
+top: 26vh;
+padding: 4px;
 background-color: #fff;
 box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 6px;
@@ -925,10 +925,10 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
 .zoom_controls{
   z-index: 500;
   position: absolute;
-  top: 35vh;
-  right:0.5vw;
+  top: 38vh;
+  right:0.6vw;
 
-  width: 36px;
+  width: 28px;
   height: 70px;
   background: #FFFFFF;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
@@ -942,11 +942,12 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   z-index: 500;
   position: absolute;
   top: 35vh;
-  right:5vw;
+ 
+  right:50vw;
 
   width: 136px;
   height: 70px;
-  background: #FFFFFF;
+  background: #cf4343;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   border-radius: 6px;
   cursor: pointer;
@@ -959,7 +960,7 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   width: 20px;
   position: absolute;
   top: 7px;
-  left: 7px;
+  left: 5.5px;
   cursor: pointer;
   /* margin: 5px; */
   
@@ -971,7 +972,7 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   position: absolute;
   top: 3.7vh;
   left: 2px;
-  width: 30px;
+  width: 25px;
 }
 .zoomout{
   /* background-color: #fff; */
@@ -979,7 +980,7 @@ box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
   width: 20px;
   position: absolute;
   top: 4.5vh;
-  left: 8px;
+  left: 5.5px;
   cursor: pointer;
   /* margin: 5px; */
   

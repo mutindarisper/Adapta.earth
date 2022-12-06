@@ -16,35 +16,12 @@
              /> -->
       </div>
 
-      <!-- <div class="legend">
-              <Legend />
-              <div class="dots">
-                <div class="high" id="red"> </div>
-                <div class="medium" id="orange"> </div>
-                <div class="low" id="green"> </div>
-
-              </div>
-              
-             
-             
-
-              <div class="risks">
-                <label for="" class="high_risk" id="risks">High risk</label>
-                <label for="" class="medium_risk" id="risks">Medium risk</label>
-              <label for="" class="medium_risk" id="risks">Low risk</label>
-
-              </div>
-
-              <div class="figures">
-                <label for="" id="figures">0 - 25%</label>
-                 <label for="" id="figures">26 - 75%</label>
-              <label for="" id="figures">76 - 100%</label>
-
-              </div>
+      <div class="legend">
+         <!-- Impact - {{risk}} -->
               
               
               
-             </div> -->
+             </div>
 
 
     </div>
@@ -66,6 +43,8 @@ const store = useCounterStore();
 
 let score = ref(null)
 let SoilChartdata = ref(null)
+
+let risk = ref('')
 
 
 
@@ -107,12 +86,29 @@ const updateScore = computed(() => {
 watch(updateScore)
 
  score.value = store.getBand4
+ if(score.value * 100 === 0) {
+  risk.value = 'Very High Risk'
+ }else if(score.value * 100 >= 40){
+  risk.value = 'Moderately High Risk'
+ }else
+ if(score.value * 100 >= 50 ) {
+  risk.value = 'High Risk'
+ }
+ if(score.value * 100 === 75){
+  risk.value = 'low Risk'
+ }
+ if(score.value * 100 === 100) {
+  risk.value = 'Very low Risk'
+ }
+  
+ 
 
  console.log(score.value, 'Updated score')
 
  return {
     score,
-    SoilChartdata
+    SoilChartdata,
+    risk
  }
     }  
 
@@ -164,8 +160,8 @@ border-radius: 21px;
     width: 12vw;
   /* background-color: rgb(248, 233, 233); */
     position: absolute;
-    top: 23vh;
-   left: 4vw;
+    top: 15vh;
+   left: 14vw;
    z-index: 900;
   
  }

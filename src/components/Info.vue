@@ -1,6 +1,6 @@
 <template>
     <div class="info_">
-        <p class="selected_area">{{' Score:'+ storeUserSelections.gray_index}}</p>
+        <p class="selected_area">{{' risk:'+ storeUserSelections.band2_risk}}</p>
         <div class="separator">
 
         </div>

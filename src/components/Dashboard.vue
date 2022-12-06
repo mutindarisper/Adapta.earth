@@ -10,7 +10,8 @@
        
        />
         <div class="info">
-            <!-- <Info /> @zoomTo="handleZoomTo"-->
+            <!-- <Info /> -->
+            <!-- risk:{{band2_risk}} -->
            
 
         </div>
@@ -156,6 +157,7 @@ import "leaflet-geosearch/dist/geosearch.css"
 import "leaflet-draw/dist/leaflet.draw-src.css";
 import "leaflet-draw";
 import { onMounted, ref, watch, computed} from 'vue';
+import axios from "axios"
 
 
 
@@ -198,11 +200,15 @@ let index = ref(null)
 let band2 = ref(null)
 let band3 = ref(null)
 let band4 = ref(null)
+let band2_risk = ref(null)
+let band3_risk = ref(null)
+let band4_risk = ref(null)
 let latlon = ref(null)
 let marker = ref(null)
 let group = ref(null)
 let editableLayers = ref(null) //draw control
 let base_map_ctrl_selections= ref(false) 
+let base_map_ctrl_cliked = ref(false)
 
 const notification = useNotification()
 notification.notify({
@@ -459,7 +465,17 @@ const getClickedIndex = () => {
 const getClickedBand2 = () => {
   band2.value = store.band_2
  console.log(band2.value , 'band_2.value')
+ getRiskValues()
+ 
+ //get risk value
+//  band2_risk.value = store.band2_risk
+
+                         
+ 
+
 }
+
+
 const getClickedBand3 = () => {
   band3.value = store.band_3
  console.log(band3.value, 'band_3.value')
@@ -467,6 +483,7 @@ const getClickedBand3 = () => {
 const getClickedBand4 = () => {
   band4.value = store.band_4
  console.log(band4.value, 'band_4.value')
+
 }
 
 const getClickedLatLon = () => {
@@ -509,6 +526,11 @@ const setBand2 = computed( () => {
   
   return  store.getBand2
 })
+const setBand2Risk = computed( () => {
+  
+  return  store.getBand2Risk
+})
+
 
 const setBand3 = computed( () => {
   
@@ -537,23 +559,18 @@ watch( setGrayIndex,() => {
 watch( setBand2,() => {
   
   getClickedBand2()
-  
  
-  
 })
 watch( setBand3,() => {
   
   getClickedBand3()
-  
  
-  
 })
 watch( setBand4,() => {
   
   getClickedBand4()
   
  
-  
 })
 
 
@@ -583,21 +600,10 @@ console.log(crop.value, 'dash selected crop')
 });
 wmsLayer.value.addTo(map);
 
-
-
- 
-
-// wmsLayer.value.on('loading', function (event) {
-//     loading.value = true
-// });
-
 //remove spinner when layer loads
 wmsLayer.value.on('load', function (event) {
      loading.value = false
 });
-
-
-
 
 //  map.on('click', this.showGetFeatureInfo
  
@@ -621,8 +627,6 @@ wmsLayer.value.on('load', function (event) {
 // )
 
 
-
-
 }
 
 
@@ -634,8 +638,6 @@ const setSelectedCrop = computed( () => {
 watch( setSelectedCrop , () => {
   
   getCrop()
-  
- 
   
 })
 
@@ -701,8 +703,8 @@ const zoom_in = () => {
 
     const handle_baseLayers = () => {
       setTimeout(() => {
-        if (this.base_map_ctrl_cliked === false)
-          this.base_map_ctrl_selections = false;
+        if (base_map_ctrl_cliked.value === false)
+          base_map_ctrl_selections.value = false;
       }, 500);
     }
 
@@ -874,283 +876,90 @@ zoomed_coord.addTo(myFGMarker)
       });
     }
 
+    const getRiskValues = () => {
+      // if (crop.value === 'Maize' || crop.value === 'Onion') {
+      //   if(band2.value <= 0.2000) {
+      //                    console.log('Very High Risk') 
+      //                    band2_risk.value = 'Very High Risk'
+      //                    } 
+      //                    else if(band2.value > 0.2001 && band2.value <= 0.4000 ){
+      //                     console.log('High Risk')
+      //                     band2_risk.value = 'High Risk'
+      //                    }else if(band2.value > 0.4001 && band2.value <= 0.6000 ){
+      //                     console.log('Moderate Risk') 
+      //                     band2_risk.value = 'Moderate Risk'
+      //                    }
+      //                    else if(band2.value > 0.6001 && band2.value <= 0.8000 ){
+      //                     console.log('Low Risk') 
+      //                     band2_risk.value = 'Low Risk'
+      //                    }else if(band2.value > 0.8001 ){
+      //                     console.log( 'Very Low Risk')
+      //                     band2_risk.value = 'Very Low Risk'
+      //                    }
 
-    // document
-    //   .getElementById("draw_polygon")
-    //   .addEventListener("click", (e) => {
-    //     console.log("click ");
-        
-    //     addDrawCtrl();
-    //     // draw_polygon();
-    //   });
+      // }
 
+      // if (crop.value === 'Potato') {
+      //   if(band2.value <= 0.0000) {
+      //                    console.log('Very High Risk') 
+      //                    band2_risk.value = 'Very High Risk'
+      //                    } 
+      //                    else if(band2.value > 0.2001 && band2.value <= 0.4000 ){
+      //                     console.log('High Risk')
+      //                     band2_risk.value = 'High Risk'
+      //                    }else if(band2.value > 0.4001 && band2.value <= 0.6000 ){
+      //                     console.log('Moderate Risk') 
+      //                     band2_risk.value = 'Moderate Risk'
+      //                    }
+      //                    else if(band2.value > 0.6001 && band2.value <= 0.8000 ){
+      //                     console.log('Low Risk') 
+      //                     band2_risk.value = 'Low Risk'
+      //                    }else if(band2.value > 0.8001 ){
+      //                     console.log( 'Very Low Risk')
+      //                     band2_risk.value = 'Very Low Risk'
+      //                    }
 
+      // }
 
+      axios.get(`http://104.207.156.130:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=${crop.value}&format=application/json`
+                    )
+           .then((response) => {
+                         console.log( response.data,`legend json ${crop.value} response` );
+                         band2_risk.value = response.data.Legend[0].rules[0].symbolizers[0].Raster.colormap.entries
+                         var labels = band2_risk.value.map( (item) => {
+                          console.log(item.label, 'labels items')
+                         })
+                         console.log(band2_risk.value, 'entries')
+                         band2_risk.value.map( (item) => {
+                          console.log(item.color, 'color item')
+                          if(item.color ==='#D7191C'){
+                            band2_risk.value = 'Very High Risk'
 
+                          } else if(item.color ==='#FDAE61'){
+                            band2_risk.value = 'High Risk'
+                          }
+                          else if(item.color ==='#FFFFBF'){
+                            band2_risk.value = 'Moderately High Risk'
+                          }
+                          else if(item.color ==='#ABDDA4'){
+                            band2_risk.value = 'Low Risk'
+                          }
+                          else if(item.color ==='#138413'){
+                            band2_risk.value = 'Very Low Risk'
+                          }
+                         })
+                         
+                         
+                    })
+                   .catch( (error) => {
+                console.log('an error occured ' + error);
+            })
+     
+      
+    }
 
 </script>
 
 <style scoped>
-.dashboard{
-  height: 60vh;
-  width: 100vw;
-}
-.spinner{
-position: absolute;
-left: 32vw;
-top: 22vh;
-/* width: 200px;
-height: 200px;
-background-color: #fff; */
-z-index: 600;
-
-}
-#map{
-    /* box-sizing: border-box; */
-
-position: absolute;
-width: 25.1vw;
-height: 47vh;
-left: 23vw;
-top: 5vh;
-border: 1px solid #E7E6E8;
-border-radius: 9px;
-z-index: 400;
-
-}
-.draw{
-  position: absolute;
-  z-index: 600;
-  right:0.7vw;
-top: 30vh;
-padding: 4px;
-background-color: #fff;
-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-  cursor: pointer;
-
-}
-.plus{
-  position: absolute;
-  z-index: 600;
-  right:0.7vw;
-top: 30.08vh;
-/* padding: 6px; */
-
-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-  cursor: pointer;
-
-}
-.upload{
-  position: absolute;
-  z-index: 600;
-  right:0.6vw;
-top: 34vh;
-padding: 5px;
-background-color: #fff;
-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-  cursor: pointer;
-}
-.download{
-  position: absolute;
-  z-index: 600;
-  right:0.6vw;
-top: 26vh;
-padding: 4px;
-background-color: #fff;
-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-  cursor: pointer;
-
-}
-.zoom_controls{
-  z-index: 500;
-  position: absolute;
-  top: 38vh;
-  right:0.6vw;
-
-  width: 28px;
-  height: 70px;
-  background: #FFFFFF;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-  cursor: pointer;
-  
- 
-}
-.basemaps{
-      z-index: 1500;
-      position: absolute;
-      top: 22vh;
-      width: 27.5px;
-      right:0.6vw;
-      cursor: pointer;
-      padding-bottom: 0px;
-      padding-left: 0px;
-background-color: rgb(255, 255, 255);
-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-    }
-
-    .base_map_ctrl_selections {
-      position: absolute;
-      z-index: 401;
-      /* margin-top: 5%; */
-      top: 22vh;
-      right:2.5vw;
-      background-color: #FFFFFF;
-      border-radius: 10px;
-      padding: 5px;
-      
-    }
-    .base_map_name {
-      font-size: 15px;
-      cursor: pointer;
-      border-bottom: #a8a8a8 solid 3px;
-    }
-    .base_map_name:hover {
-      background-color: #84f8c2;
-    }
-
-.zoom_controls1{
-  z-index: 500;
-  position: absolute;
-  top: 35vh;
- 
-  right:50vw;
-
-  width: 136px;
-  height: 70px;
-  background: #cf4343;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
-  cursor: pointer;
-  
- 
-}
-.zoomin{
-  /* background-color: #fff; */
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  top: 7px;
-  left: 5.5px;
-  cursor: pointer;
-  /* margin: 5px; */
-  
-
- 
-}
-.separate{
-  border: 0.7px dashed #D9D9D9;
-  position: absolute;
-  top: 3.7vh;
-  left: 2px;
-  width: 25px;
-}
-.zoomout{
-  /* background-color: #fff; */
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  top: 4.5vh;
-  left: 5.5px;
-  cursor: pointer;
-  /* margin: 5px; */
-  
-
- 
-}
-.info{
-    position: relative;
-    left: 25vw;
-    top:-21vh;
-    width: 186px;
-height: 192px;
-    z-index:200;
-    /* background-color: rgb(255, 255, 255); */
-}
-.biodiversity{
-    position: absolute;
-    left:23vw;
-    top: 66vh;
-    z-index:500;
-   
-}
-.climate{
-    position: absolute;
-    left: 50vw;
-    top: 66vh;
-    z-index:500;
-}
-.soil{
-    position: absolute;
-    left: 75.6vw;
-    top: 66vh;
-    z-index:500;
-}
-
-.success{
-  z-index: 1000;
-  position: absolute;
-    top: 15vh;
-    left: 25vw;
-}
-.radial{
-  position: absolute;
-    top: 11.5vh;
-    left: 53vw;
-    z-index: 1000;
-}
-.needle{
-  position: relative;
-    top: 15vh;
-    left: 58vw;
-    z-index: 2500;
-
-}
-.cap{
-  position: absolute;
-    top: 2.5vh;
-    left: 38vw;
-    z-index: 1000;
-
-}
-.climate_chart{
-  position: absolute;
-  top: 6vh;
-    left: 3vw;
-    z-index: 1000;
-}
-.soil_chart{
-  position: absolute;
-  top: 6vh;
-    left: 3vw;
-    z-index: 1000;
-}
-.water_chart{
-  position: absolute;
-    top: 6vh;
-    left: 3vw;
-    z-index: 1000;
-}
-.notification {
-  position: absolute;
-  top: 56vh;
-  left: 49vw;
-  z-index: 1000;
-  width: 25vw;
-  height: 8vh;
-  color: red;
-padding-bottom: 10px;
-padding-top: 10px;
-padding-left: 45px;
-border-radius: 15px;
-font-weight: 650;
-  /* border: red 2px solid; */
-  background-color: rgb(255, 234, 234);
-}
-
+@import url('../assets/app.css');
 </style>

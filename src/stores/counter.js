@@ -34,7 +34,14 @@ export const useCounterStore = defineStore({
     click1:'',
     click2:'',
     click3:'',
-    click4:''
+    click4:'',
+    band2_risk:'',
+    //custom colors
+    very_high:'#D7191C',
+    high:"#FDAE61",
+    moderate: "#FFFFBF",
+    low:"#ABDDA4",
+    very_low: "#138413"
     
   }),
 
@@ -174,7 +181,8 @@ export const useCounterStore = defineStore({
     getBand2: state => state.band_2,
     getBand3: state => state.band_3,
     getBand4: state => state.band_4,
-    getLatLon: state => state.latlon
+    getLatLon: state => state.latlon,
+    getBand2Risk: state => state.band2_risk
    
   },
 })

@@ -1,0 +1,262 @@
+.dashboard{
+    height: 60vh;
+    width: 100vw;
+  }
+  .spinner{
+  position: absolute;
+  left: 32vw;
+  top: 22vh;
+  /* width: 200px;
+  height: 200px;
+  background-color: #fff; */
+  z-index: 600;
+  
+  }
+  #map{
+      /* box-sizing: border-box; */
+  
+  position: absolute;
+  width: 25.1vw;
+  height: 47vh;
+  left: 23vw;
+  top: 5vh;
+  border: 1px solid #E7E6E8;
+  border-radius: 9px;
+  z-index: 400;
+  
+  }
+  .draw{
+    position: absolute;
+    z-index: 600;
+    right:0.7vw;
+  top: 30vh;
+  padding: 4px;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    cursor: pointer;
+  
+  }
+  .plus{
+    position: absolute;
+    z-index: 600;
+    right:0.7vw;
+  top: 30.08vh;
+  /* padding: 6px; */
+  
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    cursor: pointer;
+  
+  }
+  .upload{
+    position: absolute;
+    z-index: 600;
+    right:0.6vw;
+  top: 34vh;
+  padding: 5px;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .download{
+    position: absolute;
+    z-index: 600;
+    right:0.6vw;
+  top: 26vh;
+  padding: 4px;
+  background-color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    cursor: pointer;
+  
+  }
+  .zoom_controls{
+    z-index: 500;
+    position: absolute;
+    top: 38vh;
+    right:0.6vw;
+  
+    width: 28px;
+    height: 70px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    cursor: pointer;
+    
+   
+  }
+  .basemaps{
+        z-index: 1500;
+        position: absolute;
+        top: 22vh;
+        width: 27px;
+        right:0.6vw;
+        cursor: pointer;
+        padding-bottom: 0px;
+        padding-left: 0px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+      }
+  
+      .base_map_ctrl_selections {
+        position: absolute;
+        z-index: 401;
+        /* margin-top: 5%; */
+        top: 22vh;
+        right:2.5vw;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        padding: 5px;
+        
+      }
+      .base_map_name {
+        font-size: 15px;
+        cursor: pointer;
+        border-bottom: #a8a8a8 solid 3px;
+      }
+      .base_map_name:hover {
+        background-color: #08f888;
+      }
+  
+  .zoom_controls1{
+    z-index: 500;
+    position: absolute;
+    top: 35vh;
+   
+    right:50vw;
+  
+    width: 136px;
+    height: 70px;
+    background: #cf4343;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+    cursor: pointer;
+    
+   
+  }
+  .zoomin{
+    /* background-color: #fff; */
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 7px;
+    left: 5.5px;
+    cursor: pointer;
+    /* margin: 5px; */
+    
+  
+   
+  }
+  .separate{
+    border: 0.7px dashed #D9D9D9;
+    position: absolute;
+    top: 3.7vh;
+    left: 2px;
+    width: 25px;
+  }
+  .zoomout{
+    /* background-color: #fff; */
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 4.5vh;
+    left: 5.5px;
+    cursor: pointer;
+    /* margin: 5px; */
+    
+  
+   
+  }
+  .info{
+      position: relative;
+      left: 6vw;
+      top:70vh;
+      width: 186px;
+  height: 192px;
+      z-index:200;
+      /* background-color: rgb(235, 55, 55); */
+  }
+  .biodiversity{
+      position: absolute;
+      left:23vw;
+      top: 66vh;
+      z-index:500;
+     
+  }
+  .climate{
+      position: absolute;
+      left: 50vw;
+      top: 66vh;
+      z-index:500;
+  }
+  .soil{
+      position: absolute;
+      left: 75.6vw;
+      top: 66vh;
+      z-index:500;
+  }
+  
+  .success{
+    z-index: 1000;
+    position: absolute;
+      top: 15vh;
+      left: 25vw;
+  }
+  .radial{
+    position: absolute;
+      top: 11.5vh;
+      left: 53vw;
+      z-index: 1000;
+  }
+  .needle{
+    position: relative;
+      top: 15vh;
+      left: 58vw;
+      z-index: 2500;
+  
+  }
+  .cap{
+    position: absolute;
+      top: 2.5vh;
+      left: 38vw;
+      z-index: 1000;
+  
+  }
+  .climate_chart{
+    position: absolute;
+    top: 6vh;
+      left: 3vw;
+      z-index: 1000;
+  }
+  .soil_chart{
+    position: absolute;
+    top: 6vh;
+      left: 3vw;
+      z-index: 1000;
+  }
+  .water_chart{
+    position: absolute;
+      top: 6vh;
+      left: 1vw;
+      z-index: 1000;
+  }
+  .notification {
+    position: absolute;
+    top: 56vh;
+    left: 49vw;
+    z-index: 1000;
+    width: 25vw;
+    height: 8vh;
+    color: red;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 45px;
+  border-radius: 15px;
+  font-weight: 650;
+    /* border: red 2px solid; */
+    background-color: rgb(255, 234, 234);
+  }
+  

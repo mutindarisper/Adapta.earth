@@ -1,7 +1,7 @@
 <template>
     <div class="composite">
         <span class="composite_score">
-                Soil score
+                Soil Suitability score
         </span>
 
         <div class="data">

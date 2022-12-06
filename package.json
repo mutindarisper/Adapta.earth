@@ -11,6 +11,7 @@
     "@kyvg/vue3-notification": "^2.6.1",
     "BetterWMS": "git+https://github.com/jfaraklit/BetterWMS.git",
     "apexcharts": "^3.36.3",
+    "axios": "^1.2.1",
     "chart.js": "^3.9.1",
     "chartjs-gauge": "^0.3.0",
     "chartjs-plugin-datalabels": "^2.0.0-rc.1",

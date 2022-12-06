@@ -1,7 +1,7 @@
 <template>
     <div class="composite">
         <span class="composite_score">
-                Climate score
+                Climate Suitability score
         </span>
 
         <div class="data">

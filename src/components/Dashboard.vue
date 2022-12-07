@@ -11,7 +11,7 @@
        />
         <div class="info">
             <!-- <Info /> -->
-            <!-- risk:{{band2_risk}} -->
+            Impact: <p id="band2_risk">{{band2_risk}}</p>
            
 
         </div>
@@ -877,86 +877,321 @@ zoomed_coord.addTo(myFGMarker)
     }
 
     const getRiskValues = () => {
-      // if (crop.value === 'Maize' || crop.value === 'Onion') {
-      //   if(band2.value <= 0.2000) {
-      //                    console.log('Very High Risk') 
-      //                    band2_risk.value = 'Very High Risk'
-      //                    } 
-      //                    else if(band2.value > 0.2001 && band2.value <= 0.4000 ){
-      //                     console.log('High Risk')
-      //                     band2_risk.value = 'High Risk'
-      //                    }else if(band2.value > 0.4001 && band2.value <= 0.6000 ){
-      //                     console.log('Moderate Risk') 
-      //                     band2_risk.value = 'Moderate Risk'
-      //                    }
-      //                    else if(band2.value > 0.6001 && band2.value <= 0.8000 ){
-      //                     console.log('Low Risk') 
-      //                     band2_risk.value = 'Low Risk'
-      //                    }else if(band2.value > 0.8001 ){
-      //                     console.log( 'Very Low Risk')
-      //                     band2_risk.value = 'Very Low Risk'
-      //                    }
+      if (crop.value === 'Maize' || crop.value === 'Onion' || crop.value === 'Sesame' || crop.value === 'Cassava'  || crop.value === 'Cassava'  || crop.value === 'Sorghum') {
+        if(band2.value <= 0.2000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.2001 && band2.value <= 0.4000 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band2.value > 0.4001 && band2.value <= 0.6000 ){
+                          console.log('Moderate Risk') 
+                          band2_risk.value = 'Moderate Risk'
+                         }
+                         else if(band2.value > 0.6001 && band2.value <= 0.8000 ){
+                          console.log('Low Risk') 
+                          band2_risk.value = 'Low Risk'
+                         }else if(band2.value > 0.8001 ){
+                          console.log( 'Very Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
 
-      // }
+      }
 
-      // if (crop.value === 'Potato') {
-      //   if(band2.value <= 0.0000) {
-      //                    console.log('Very High Risk') 
-      //                    band2_risk.value = 'Very High Risk'
-      //                    } 
-      //                    else if(band2.value > 0.2001 && band2.value <= 0.4000 ){
-      //                     console.log('High Risk')
-      //                     band2_risk.value = 'High Risk'
-      //                    }else if(band2.value > 0.4001 && band2.value <= 0.6000 ){
-      //                     console.log('Moderate Risk') 
-      //                     band2_risk.value = 'Moderate Risk'
-      //                    }
-      //                    else if(band2.value > 0.6001 && band2.value <= 0.8000 ){
-      //                     console.log('Low Risk') 
-      //                     band2_risk.value = 'Low Risk'
-      //                    }else if(band2.value > 0.8001 ){
-      //                     console.log( 'Very Low Risk')
-      //                     band2_risk.value = 'Very Low Risk'
-      //                    }
+      if (crop.value === 'Potato') {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.2001 && band2.value <= 0.4000 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band2.value > 0.4001 && band2.value <= 0.6000 ){
+                          console.log('Moderate Risk') 
+                          band2_risk.value = 'Moderate Risk'
+                         }
+                         else if(band2.value > 0.6001 && band2.value <= 0.8000 ){
+                          console.log('Low Risk') 
+                          band2_risk.value = 'Low Risk'
+                         }else if(band2.value > 0.8001 ){
+                          console.log( 'Very Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
 
-      // }
+      }
 
-      axios.get(`http://104.207.156.130:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=${crop.value}&format=application/json`
-                    )
-           .then((response) => {
-                         console.log( response.data,`legend json ${crop.value} response` );
-                         band2_risk.value = response.data.Legend[0].rules[0].symbolizers[0].Raster.colormap.entries
-                         var labels = band2_risk.value.map( (item) => {
-                          console.log(item.label, 'labels items')
-                         })
-                         console.log(band2_risk.value, 'entries')
-                         band2_risk.value.map( (item) => {
-                          console.log(item.color, 'color item')
-                          if(item.color ==='#D7191C'){
-                            band2_risk.value = 'Very High Risk'
+      if (crop.value === 'Avocado') {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.0000 && band2.value <= 0.0069 ){
+                          console.log('Moderate Risk')
+                          band2_risk.value = 'Moderate Risk'
+                         }else if(band2.value > 0.0069 && band2.value <= 0.6000 ){
+                          console.log('Very Low Risk') 
+                          band2_risk.value = 'Very Low Risk'
+                         }
+                         
 
-                          } else if(item.color ==='#FDAE61'){
-                            band2_risk.value = 'High Risk'
-                          }
-                          else if(item.color ==='#FFFFBF'){
-                            band2_risk.value = 'Moderately High Risk'
-                          }
-                          else if(item.color ==='#ABDDA4'){
-                            band2_risk.value = 'Low Risk'
-                          }
-                          else if(item.color ==='#138413'){
-                            band2_risk.value = 'Very Low Risk'
-                          }
-                         })
+      }
+      if (crop.value === 'Coffee' ) {
+        if(band2.value <= 0.1986) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.1987 && band2.value <= 0.3971 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band2.value > 0.3972 && band2.value <= 0.5957 ){
+                          console.log('Moderate Risk') 
+                          band2_risk.value = 'Moderate Risk'
+                         }
+                         else if(band2.value > 0.5958 && band2.value <=  0.7943 ){
+                          console.log('Low Risk') 
+                          band2_risk.value = 'Low Risk'
+                         }else if(band2.value > 0.7943 ){
+                          console.log( 'Very Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
+
+      }
+      if (crop.value === 'Tea' ) {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.0000 && band2.value <= 0.2500 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band2.value > 0.2500 && band2.value <= 0.5000 ){
+                          console.log('Moderate Risk') 
+                          band2_risk.value = 'Moderate Risk'
+                         }
+                         else if(band2.value > 0.5000 && band2.value <=  0.7500 ){
+                          console.log('Low Risk') 
+                          band2_risk.value = 'Low Risk'
+                         }else if(band2.value > 0.7500 && band2.value <=  1.0000 ){
+                          console.log( 'Very Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
+
+      }
+      if (crop.value === 'Tomato' ) {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.0000 && band2.value <= 0.0416 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }
+                       else if(band2.value > 0.0416){
+                          console.log( 'Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
+
+      }
+
+     
+      //               )
+      //      .then((response) => {
+      //                    console.log( response.data,`legend json ${crop.value} response` );
+      //                    band2_risk.value = response.data.Legend[0].rules[0].symbolizers[0].Raster.colormap.entries
+      //                    var labels = band2_risk.value.map( (item) => {
+      //                     console.log(item.label, 'labels items')
+      //                    })
+      //                    console.log(band2_risk.value, 'entries')
+      //                    band2_risk.value.map( (item) => {
+      //                     console.log(item.color, 'color item')
+      //                     if(item.color ==='#D7191C'){
+      //                       band2_risk.value = 'Very High Risk'
+
+      //                     } else if(item.color ==='#FDAE61'){
+      //                       band2_risk.value = 'High Risk'
+      //                     }
+      //                     else if(item.color ==='#FFFFBF'){
+      //                       band2_risk.value = 'Moderately High Risk'
+      //                     }
+      //                     else if(item.color ==='#ABDDA4'){
+      //                       band2_risk.value = 'Low Risk'
+      //                     }
+      //                     else if(item.color ==='#138413'){
+      //                       band2_risk.value = 'Very Low Risk'
+      //                     }
+      //                    })
                          
                          
-                    })
-                   .catch( (error) => {
-                console.log('an error occured ' + error);
-            })
+      //               })
+      //              .catch( (error) => {
+      //           console.log('an error occured ' + error);
+      //       })
      
       
     }
+
+    const getRisk3Values = () => {
+      if (crop.value === 'Maize' || crop.value === 'Onion' || crop.value === 'Sesame' || crop.value === 'Cassava'  || crop.value === 'Cassava'  || crop.value === 'Sorghum') {
+        if(band3.value <= 0.2000) {
+                         console.log('Very High Risk') 
+                         band3_risk.value = 'Very High Risk'
+                         } 
+                         else if(band3.value > 0.2001 && band3.value <= 0.4000 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band3.value > 0.4001 && band3.value <= 0.6000 ){
+                          console.log('Moderate Risk') 
+                          band3_risk.value = 'Moderate Risk'
+                         }
+                         else if(band3.value > 0.6001 && band3.value <= 0.8000 ){
+                          console.log('Low Risk') 
+                          band3_risk.value = 'Low Risk'
+                         }else if(band3.value > 0.8001 ){
+                          console.log( 'Very Low Risk')
+                          band3_risk.value = 'Very Low Risk'
+                         }
+
+      }
+
+      if (crop.value === 'Potato') {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.2001 && band2.value <= 0.4000 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band2.value > 0.4001 && band2.value <= 0.6000 ){
+                          console.log('Moderate Risk') 
+                          band2_risk.value = 'Moderate Risk'
+                         }
+                         else if(band2.value > 0.6001 && band2.value <= 0.8000 ){
+                          console.log('Low Risk') 
+                          band2_risk.value = 'Low Risk'
+                         }else if(band2.value > 0.8001 ){
+                          console.log( 'Very Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
+
+      }
+
+      if (crop.value === 'Avocado') {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.0000 && band2.value <= 0.0069 ){
+                          console.log('Moderate Risk')
+                          band2_risk.value = 'Moderate Risk'
+                         }else if(band2.value > 0.0069 && band2.value <= 0.6000 ){
+                          console.log('Very Low Risk') 
+                          band2_risk.value = 'Very Low Risk'
+                         }
+                         
+
+      }
+      if (crop.value === 'Coffee' ) {
+        if(band2.value <= 0.1986) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.1987 && band2.value <= 0.3971 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band2.value > 0.3972 && band2.value <= 0.5957 ){
+                          console.log('Moderate Risk') 
+                          band2_risk.value = 'Moderate Risk'
+                         }
+                         else if(band2.value > 0.5958 && band2.value <=  0.7943 ){
+                          console.log('Low Risk') 
+                          band2_risk.value = 'Low Risk'
+                         }else if(band2.value > 0.7943 ){
+                          console.log( 'Very Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
+
+      }
+      if (crop.value === 'Tea' ) {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.0000 && band2.value <= 0.2500 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }else if(band2.value > 0.2500 && band2.value <= 0.5000 ){
+                          console.log('Moderate Risk') 
+                          band2_risk.value = 'Moderate Risk'
+                         }
+                         else if(band2.value > 0.5000 && band2.value <=  0.7500 ){
+                          console.log('Low Risk') 
+                          band2_risk.value = 'Low Risk'
+                         }else if(band2.value > 0.7500 && band2.value <=  1.0000 ){
+                          console.log( 'Very Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
+
+      }
+      if (crop.value === 'Tomato' ) {
+        if(band2.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band2_risk.value = 'Very High Risk'
+                         } 
+                         else if(band2.value > 0.0000 && band2.value <= 0.0416 ){
+                          console.log('High Risk')
+                          band2_risk.value = 'High Risk'
+                         }
+                       else if(band2.value > 0.0416){
+                          console.log( 'Low Risk')
+                          band2_risk.value = 'Very Low Risk'
+                         }
+
+      }
+
+     
+      //               )
+      //      .then((response) => {
+      //                    console.log( response.data,`legend json ${crop.value} response` );
+      //                    band2_risk.value = response.data.Legend[0].rules[0].symbolizers[0].Raster.colormap.entries
+      //                    var labels = band2_risk.value.map( (item) => {
+      //                     console.log(item.label, 'labels items')
+      //                    })
+      //                    console.log(band2_risk.value, 'entries')
+      //                    band2_risk.value.map( (item) => {
+      //                     console.log(item.color, 'color item')
+      //                     if(item.color ==='#D7191C'){
+      //                       band2_risk.value = 'Very High Risk'
+
+      //                     } else if(item.color ==='#FDAE61'){
+      //                       band2_risk.value = 'High Risk'
+      //                     }
+      //                     else if(item.color ==='#FFFFBF'){
+      //                       band2_risk.value = 'Moderately High Risk'
+      //                     }
+      //                     else if(item.color ==='#ABDDA4'){
+      //                       band2_risk.value = 'Low Risk'
+      //                     }
+      //                     else if(item.color ==='#138413'){
+      //                       band2_risk.value = 'Very Low Risk'
+      //                     }
+      //                    })
+                         
+                         
+      //               })
+      //              .catch( (error) => {
+      //           console.log('an error occured ' + error);
+      //       })
+     
+      
+    }
+
+
+
+
+
+
+    
 
 </script>
 

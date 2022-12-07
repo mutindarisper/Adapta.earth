@@ -172,12 +172,31 @@
   }
   .info{
       position: relative;
-      left: 6vw;
-      top:70vh;
+      left: 37vw;
+      top:80vh;
       width: 186px;
   height: 192px;
-      z-index:200;
+      z-index:600;
+      
+
+/* line-height: 145.02%; */
+/* or 22px */
+
+
+/* Primary Colours/Green */
+
+color: #447087;
+
       /* background-color: rgb(235, 55, 55); */
+  }
+  #band2_risk{
+    position: relative;
+      left: 3vw;
+      top:-2.2vh;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12.5px;
   }
   .biodiversity{
       position: absolute;
@@ -228,19 +247,19 @@
   .climate_chart{
     position: absolute;
     top: 6vh;
-      left: 3vw;
+      left: 1vw;
       z-index: 1000;
   }
   .soil_chart{
     position: absolute;
     top: 6vh;
-      left: 3vw;
+      left: 1vw;
       z-index: 1000;
   }
   .water_chart{
     position: absolute;
       top: 6vh;
-      left: 1vw;
+      left: -1vw;
       z-index: 1000;
   }
   .notification {

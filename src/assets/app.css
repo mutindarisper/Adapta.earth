@@ -177,22 +177,32 @@
       width: 186px;
   height: 192px;
       z-index:600;
-      
-
-/* line-height: 145.02%; */
-/* or 22px */
-
-
-/* Primary Colours/Green */
-
 color: #447087;
 
-      /* background-color: rgb(235, 55, 55); */
   }
+  .info2{
+    position: absolute;
+    left: 62vw;
+    top:80vh;
+    width: 186px;
+height: 192px;
+    z-index:700;
+color: #447087;
+
+}
   #band2_risk{
     position: relative;
       left: 3vw;
       top:-2.2vh;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12.5px;
+  }
+  #band3_risk{
+    position: absolute;
+      left: 3vw;
+      top:0.5vh;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 800;
@@ -247,13 +257,13 @@ color: #447087;
   .climate_chart{
     position: absolute;
     top: 6vh;
-      left: 1vw;
+      left: -1vw;
       z-index: 1000;
   }
   .soil_chart{
     position: absolute;
     top: 6vh;
-      left: 1vw;
+      left: -1vw;
       z-index: 1000;
   }
   .water_chart{

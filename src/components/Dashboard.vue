@@ -9,6 +9,9 @@
         @zoomTo2="handlezoom2"
        
        />
+       <div class="esri_geocoder">
+esri search
+</div>
         <div class="info" v-if="(band2_risk != null)">
             <!-- <Info /> -->
             Impact: <p id="band2_risk">{{band2_risk}}</p>
@@ -24,6 +27,7 @@
         <div class="info3"  v-if="(band4_risk != null)">
             <!-- <Info /> -->
             Impact: <p id="band4_risk">{{band4_risk}}</p>
+           
            
 
         </div>
@@ -161,6 +165,14 @@ import "leaflet-search/dist/leaflet-search.src.css"
 import "leaflet.wms"
 // import "BetterWMS/L.TileLayer.BetterWMS"
 // import betterWMS from "leaflet.wms/dist/betterWMS.min.js"
+
+
+import "esri-leaflet"
+import  "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js"
+import "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
+
+import * as esri_geo from 'esri-leaflet-geocoder';
+
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useNotification } from "@kyvg/vue3-notification";
@@ -1288,6 +1300,8 @@ zoomed_coord.addTo(myFGMarker)
      
       
     }
+    //search by coordinates and place names
+    
 
 
 

@@ -28,16 +28,18 @@
        
 
         <button class="biodiversity">Compute score</button>
-        <label class="search_coords">Search Coordinates</label>
+        <!-- <label class="search_coords">Search Coordinates</label>
         <div class="coordinates" id="coords"  @keyup="$emit('zoomTo2')">
          
       <label class="lats" for="">Lat:</label>
        <input type="text" name="lat" id="lat"/>
-    <!-- <br/> -->
+ 
    <label class="lats" for=""> Lon:</label>
      <input type="text" name="lng" id="lng"/>
     <button class="search_button" type="button" @click="$emit('zoomTo')" value="Search">Search</button>
-    </div>
+    </div> -->
+
+   
 
 
 
@@ -79,7 +81,7 @@ cursor: pointer;
     top:2vw;
 }
 .analyze{
-    height: 40vh;
+    height: 35vh;
     width: 16vw;
     position: absolute;
     left: 4vw;
@@ -121,7 +123,7 @@ cursor: pointer;
     width: 85px;
     height: 17px;
     left: 3vw;
-  top: 18vh;
+  top: 10vh;
     font-family: 'SansSerif';
     font-style: normal;
     font-weight: 600;
@@ -164,7 +166,7 @@ position: absolute;
 width: 173px;
 height: 30px;
 left: 3vw;
-top: 20vh;
+top: 12vh;
 background: #ffffff;
 border: 1px solid #C3C8CF;
 border-radius: 8px;
@@ -175,7 +177,7 @@ cursor: pointer;
 width: 173px;
 height: 30px;
 left: 3vw;
-top: 25vh;
+top: 18vh;
 background: #27AE60;
 border-radius: 8px;
 outline: none;
@@ -189,7 +191,7 @@ cursor: pointer;
 width: 161px;
 height: 30px;
 left: 3vw;
-top: 29vh;
+top: 22vh;
 /* background: #F2F2F2; */
 border-radius: 8px;
 outline: none;

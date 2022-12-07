@@ -171,6 +171,17 @@
   
    
   }
+
+  .esri_geocoder{
+    position: absolute;
+    left: 7vw;
+    top:80vh;
+    width: 186px;
+height: 192px;
+    z-index:600;
+
+
+}
   .info{
       position: relative;
       left: 37vw;

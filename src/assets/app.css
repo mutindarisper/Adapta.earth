@@ -1,6 +1,7 @@
 .dashboard{
-    height: 60vh;
-    width: 100vw;
+    height: 70%;
+    width: 100%;
+    /* overflow-x: hidden; */
   }
   .spinner{
   position: absolute;

@@ -9,19 +9,19 @@
         @zoomTo2="handlezoom2"
        
        />
-        <div class="info">
+        <div class="info" v-if="(band2_risk != null)">
             <!-- <Info /> -->
             Impact: <p id="band2_risk">{{band2_risk}}</p>
            
 
         </div>
-        <div class="info2">
+        <div class="info2" v-if="(band3_risk != null)">
             <!-- <Info /> -->
             Impact: <p id="band3_risk">{{band3_risk}}</p>
            
 
         </div>
-        <div class="info3">
+        <div class="info3"  v-if="(band4_risk != null)">
             <!-- <Info /> -->
             Impact: <p id="band4_risk">{{band4_risk}}</p>
            

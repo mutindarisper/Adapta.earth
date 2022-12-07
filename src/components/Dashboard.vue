@@ -21,6 +21,12 @@
            
 
         </div>
+        <div class="info3">
+            <!-- <Info /> -->
+            Impact: <p id="band4_risk">{{band4_risk}}</p>
+           
+
+        </div>
         
         <div  class="spinner"  v-if="loading">
             <img src="../assets/loader_white.svg" alt="">
@@ -473,6 +479,7 @@ const getClickedBand2 = () => {
  console.log(band2.value , 'band_2.value')
  getRiskValues()
  getRisk3Values()
+ getRisk4Values()
  
  //get risk value
 //  band2_risk.value = store.band2_risk
@@ -884,7 +891,7 @@ zoomed_coord.addTo(myFGMarker)
     }
 
     const getRiskValues = () => {
-      if (crop.value === 'Maize' || crop.value === 'Onion' || crop.value === 'Sesame' || crop.value === 'Cassava'  || crop.value === 'Cassava'  || crop.value === 'Sorghum') {
+      if (crop.value === 'Maize' || crop.value === 'Onion' || crop.value === 'Sesame' || crop.value === 'Cassava'  || crop.value === 'Cassava'  || crop.value === 'Sorghum'  || crop.value === 'Macadamia') {
         if(band2.value <= 0.2000) {
                          console.log('Very High Risk') 
                          band2_risk.value = 'Very High Risk'
@@ -1046,7 +1053,7 @@ zoomed_coord.addTo(myFGMarker)
                          } 
                          else if(band3.value > 0.2001 && band3.value <= 0.4000 ){
                           console.log('High Risk')
-                          band2_risk.value = 'High Risk'
+                          band3_risk.value = 'High Risk'
                          }else if(band3.value > 0.4001 && band3.value <= 0.6000 ){
                           console.log('Moderate Risk') 
                           band3_risk.value = 'Moderate Risk'
@@ -1068,7 +1075,7 @@ zoomed_coord.addTo(myFGMarker)
                          } 
                          else if(band3.value > 0.2001 && band3.value <= 0.4000 ){
                           console.log('High Risk')
-                          band2_risk.value = 'High Risk'
+                          band3_risk.value = 'High Risk'
                          }else if(band3.value > 0.4001 && band3.value <= 0.6000 ){
                           console.log('Moderate Risk') 
                           band3_risk.value = 'Moderate Risk'
@@ -1152,6 +1159,128 @@ zoomed_coord.addTo(myFGMarker)
                        else if(band3.value > 0.0416){
                           console.log( 'Low Risk')
                           band3_risk.value = 'Very Low Risk'
+                         }
+
+      }
+
+     
+      
+    }
+
+    const getRisk4Values = () => {
+      if (crop.value === 'Maize' || crop.value === 'Onion' || crop.value === 'Sesame' || crop.value === 'Cassava'  || crop.value === 'Cassava'  || crop.value === 'Sorghum') {
+        if(band4.value <= 0.2000) {
+                         console.log('Very High Risk') 
+                         band4_risk.value = 'Very High Risk'
+                         } 
+                         else if(band4.value > 0.2001 && band4.value <= 0.4000 ){
+                          console.log('High Risk')
+                          band4_risk.value = 'High Risk'
+                         }else if(band4.value > 0.4001 && band4.value <= 0.6000 ){
+                          console.log('Moderate Risk') 
+                          band4_risk.value = 'Moderate Risk'
+                         }
+                         else if(band4.value > 0.6001 && band4.value <= 0.8000 ){
+                          console.log('Low Risk') 
+                          band4_risk.value = 'Low Risk'
+                         }else if(band4.value > 0.8001 ){
+                          console.log( 'Very Low Risk')
+                          band4_risk.value = 'Very Low Risk'
+                         }
+
+      }
+
+      if (crop.value === 'Potato') {
+        if(band4.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band4_risk.value = 'Very High Risk'
+                         } 
+                         else if(band4.value > 0.2001 && band4.value <= 0.4000 ){
+                          console.log('High Risk')
+                          band4_risk.value = 'High Risk'
+                         }else if(band4.value > 0.4001 && band4.value <= 0.6000 ){
+                          console.log('Moderate Risk') 
+                          band4_risk.value = 'Moderate Risk'
+                         }
+                         else if(band4.value > 0.6001 && band4.value <= 0.8000 ){
+                          console.log('Low Risk') 
+                          band4_risk.value = 'Low Risk'
+                         }else if(band4.value > 0.8001 ){
+                          console.log( 'Very Low Risk')
+                          band4_risk.value = 'Very Low Risk'
+                         }
+
+      }
+
+      if (crop.value === 'Avocado') {
+        if(band4.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band4_risk.value = 'Very High Risk'
+                         } 
+                         else if(band4.value > 0.0000 && band4.value <= 0.0069 ){
+                          console.log('Moderate Risk')
+                          band4_risk.value = 'Moderate Risk'
+                         }else if(band4.value > 0.0069 && band4.value <= 0.6000 ){
+                          console.log('Very Low Risk') 
+                          band4_risk.value = 'Very Low Risk'
+                         }
+                         
+
+      }
+      if (crop.value === 'Coffee' ) {
+        if(bandd4value <= 0.1986) {
+                         console.log('Very High Risk') 
+                         band4_risk.value = 'Very High Risk'
+                         } 
+                         else if(band4.value > 0.1987 && band4.value <= 0.3971 ){
+                          console.log('High Risk')
+                          band4_risk.value = 'High Risk'
+                         }else if(band4.value > 0.3972 && band4.value <= 0.5957 ){
+                          console.log('Moderate Risk') 
+                          band4_risk.value = 'Moderate Risk'
+                         }
+                         else if(band4.value > 0.5958 && band4.value <=  0.7943 ){
+                          console.log('Low Risk') 
+                          band4_risk.value = 'Low Risk'
+                         }else if(band4.value > 0.7943 ){
+                          console.log( 'Very Low Risk')
+                          band4_risk.value = 'Very Low Risk'
+                         }
+
+      }
+      if (crop.value === 'Tea' ) {
+        if(band4.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band4_risk.value = 'Very High Risk'
+                         } 
+                         else if(band4.value > 0.0000 && band4.value <= 0.2500 ){
+                          console.log('High Risk')
+                          band3_risk.value = 'High Risk'
+                         }else if(band4.value > 0.2500 && band4.value <= 0.5000 ){
+                          console.log('Moderate Risk') 
+                          band4_risk.value = 'Moderate Risk'
+                         }
+                         else if(band4.value > 0.5000 && band4.value <=  0.7500 ){
+                          console.log('Low Risk') 
+                          band4_risk.value = 'Low Risk'
+                         }else if(band4.value > 0.7500 && band4.value <=  1.0000 ){
+                          console.log( 'Very Low Risk')
+                          band4_risk.value = 'Very Low Risk'
+                         }
+
+      }
+      if (crop.value === 'Tomato' ) {
+        if(band4.value <= 0.0000) {
+                         console.log('Very High Risk') 
+                         band4_risk.value = 'Very High Risk'
+                         } 
+                         else if(band4.value > 0.0000 && band4.value <= 0.0416 ){
+                          console.log('High Risk')
+                          band4_risk.value = 'High Risk'
+                         }
+                       else if(band4.value > 0.0416){
+                          console.log( 'Low Risk')
+                          band4_risk.value = 'Very Low Risk'
                          }
 
       }

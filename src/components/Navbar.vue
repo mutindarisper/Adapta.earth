@@ -6,7 +6,7 @@
     <img src="../assets/adapta-2.png" alt="" class="adapta_logo">
             <div class="links"> 
                 <a href="home.html">Home</a>
-                <router-link to="/" class="dash">Dashboard</router-link>
+                <router-link to="/" class="dash">ADAPTA CS</router-link>
                 <!-- <RouterLink to="" class="dash">Dashboard</RouterLink> -->
                 <router-link to="/about">Subscription</router-link>
                 <router-link to="/about" class="portfolio">Portfolio Management</router-link>

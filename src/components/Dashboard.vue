@@ -9,9 +9,9 @@
         @zoomTo2="handlezoom2"
        
        />
-       <div class="esri_geocoder">
+       <!-- <div class="esri_geocoder">
 esri search
-</div>
+</div> -->
         <div class="info" v-if="(band2_risk != null)">
             <!-- <Info /> -->
             Impact: <p id="band2_risk">{{band2_risk}}</p>
@@ -167,11 +167,6 @@ import "leaflet.wms"
 // import betterWMS from "leaflet.wms/dist/betterWMS.min.js"
 
 
-import "esri-leaflet"
-import  "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.js"
-import "esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
-
-import * as esri_geo from 'esri-leaflet-geocoder';
 
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
@@ -342,33 +337,7 @@ map.addControl(searchControl);
     );
 
 
-//     wmsLayer.value =  L.tileLayer.betterWms("http://104.207.156.130:8080/geoserver/adapta/wms?", {
-//       pane: 'pane800',
-//       layers: 'adapta:MULTI',
-//       format: 'image/png',
-//       // band:'GRAY_INDEX',
-//       transparent: true,  
-//       opacity:0.6
-// });
-// wmsLayer.value.addTo(map);
-    
-    // map.on('geosearch/showlocation', function(e) {
-    //   console.log(e.location, 'expecting result') //got result
-    //   storeUserSelections.searched_location = e.location.label.substring(0,20)
-    //   console.log( storeUserSelections.searched_location.substring(0,20), 'store location result')
 
-    // });
-
-  //   .on('markgeocode', function(e) {
-  //   var bbox = e.geocode.bbox;
-  //   var poly = L.polygon([
-  //     bbox.getSouthEast(),
-  //     bbox.getNorthEast(),
-  //     bbox.getNorthWest(),
-  //     bbox.getSouthWest()
-  //   ]).addTo(map);
-  //   map.fitBounds(poly.getBounds());
-  // })
 
 
 })//onmounted end
@@ -438,16 +407,7 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
       // console.log(latlng, 'lat long')
       
       ;
-      // var mark = L.icon({
-      //                                           iconUrl: "/src/assets/plant.svg",
-      //                                           iconSize: [30, 30],
-      //                                           iconAnchor: [15,15]
-      //                                         });
-                                          
-      //       return L.marker([latlng.lat, latlng.lng], {icon: mark}).bindPopup("<strong>Composite score:<strong>" + store.gray_index ).addTo(map);
-      // console.log(content.features[0].properties.Band2, 'Band 2') L.marker([latlng.lat, latlng.lng]).addTo(map);
-      // console.log(content.features[0].properties.Band2, 'band2')
-
+    
 
 console.log(store.gray_index, 'store gray index')
 store.gray_index = content.features[0].properties.Band1
@@ -492,11 +452,6 @@ const getClickedBand2 = () => {
  getRiskValues()
  getRisk3Values()
  getRisk4Values()
- 
- //get risk value
-//  band2_risk.value = store.band2_risk
-
-                         
  
 
 }
@@ -669,29 +624,6 @@ watch( setSelectedCrop , () => {
 
 
 
-// const geocoderFn = () => {
-//   var geocoder = L.Control.geocoder({
-//   defaultMarkGeocode: false,
-//   position: 'topright',
-//   container:'findbox'
-//   // className:'searchbox'
-// })
-//   .on('markgeocode',  function(e) {
-//     var bbox = e.geocode.bbox;
-//     var poly = L.polygon([
-//       bbox.getSouthEast(),
-//       bbox.getNorthEast(),
-//       bbox.getNorthWest(),
-//       bbox.getSouthWest()
-//     ]).addTo(map);
-//     console.log(e.geocode, 'geocode result')
-//     map.fitBounds(poly.getBounds());
-//   //I'll use zoom controls to zoom in
-   
-//   })
-  
-//   .addTo(map);
-// }
 
 
 
@@ -1300,15 +1232,6 @@ zoomed_coord.addTo(myFGMarker)
      
       
     }
-    //search by coordinates and place names
-    
-
-
-
-
-
-
-    
 
 </script>
 

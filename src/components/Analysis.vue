@@ -191,7 +191,7 @@ cursor: pointer;
 width: 161px;
 height: 30px;
 left: 3vw;
-top: 22vh;
+top: 24vh;
 /* background: #F2F2F2; */
 border-radius: 8px;
 outline: none;

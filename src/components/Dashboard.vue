@@ -12,21 +12,21 @@
        <!-- <div class="esri_geocoder">
 esri search
 </div> -->
-        <div class="info" v-if="(band2_risk != null)">
-            <!-- <Info /> -->
-            Impact: <p id="band2_risk">{{band2_risk}}</p>
+        <div class="info">
+            <!-- <Info />  v-if="(band2_risk != null)"-->
+            Impact- <p id="band2_risk">{{band2_risk}}</p>
            
 
         </div>
-        <div class="info2" v-if="(band3_risk != null)">
-            <!-- <Info /> -->
-            Impact: <p id="band3_risk">{{band3_risk}}</p>
+        <div class="info2" > 
+            <!-- <Info />  v-if="(band3_risk != null)" to be returned-->
+            Impact- <p id="band3_risk">{{band3_risk}}</p>
            
 
         </div>
-        <div class="info3"  v-if="(band4_risk != null)">
-            <!-- <Info /> -->
-            Impact: <p id="band4_risk">{{band4_risk}}</p>
+        <div class="info3"  >
+            <!-- <Info /> v-if="(band4_risk != null)" -->
+            Impact- <p id="band4_risk">{{band4_risk}}</p>
            
            
 

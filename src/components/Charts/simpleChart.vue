@@ -67,8 +67,10 @@
               type: 'radialBar',
               toolbar: {
                 show: true,
+                offsetX: 50,
+                offsetY: -20,
                 tools: {
-            download: '<img src="download.svg" title="Download chart" position="abosolute;" top="1vh" left="5vw" />',
+            download: '<img src="download.svg" title="Download chart" />',
         
         }
 
@@ -287,3 +289,6 @@ watch(updateScore)
   
   
   </script>
+  <style scoped>
+  
+  </style>

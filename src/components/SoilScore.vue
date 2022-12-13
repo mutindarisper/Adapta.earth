@@ -136,7 +136,7 @@ border-radius: 9px;
  }
  .composite_score{
     position: relative;
-    left: 5vw;
+    left: 10vw;
     top: 3vh;
     width: 34px;
   padding:2px 10px 2px 10px;

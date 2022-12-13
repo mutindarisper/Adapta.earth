@@ -67,8 +67,8 @@
                type: 'radialBar',
                toolbar: {
                 show: true,
-                offsetX: 130,
-                offsetY: -25,
+                offsetX: 148,
+                offsetY: 35,
                 tools: {
             download: '<img src="download.svg" title="Download chart" />',
         }

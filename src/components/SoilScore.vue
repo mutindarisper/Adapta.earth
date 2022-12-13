@@ -137,7 +137,7 @@ border-radius: 9px;
  .composite_score{
     position: relative;
     left: 10vw;
-    top: 3vh;
+    top: 6.5vh;
     width: 34px;
   padding:2px 10px 2px 10px;
   font-family: 'Inter';

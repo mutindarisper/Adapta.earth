@@ -287,20 +287,20 @@ color: #447087;
   }
   .climate_chart{
     position: absolute;
-    top: 6vh;
-      left: -1vw;
+    top: 3vh;
+      left: -3vw;
       z-index: 1000;
   }
   .soil_chart{
     position: absolute;
-    top: 6vh;
-      left: -1vw;
+    top: 3vh;
+      left: -3vw;
       z-index: 1000;
   }
   .water_chart{
     position: absolute;
-      top: 6vh;
-      left: -1vw;
+    top: 3vh;
+    left: -3vw;
       z-index: 1000;
   }
   .notification {

@@ -12,20 +12,20 @@
        <!-- <div class="esri_geocoder">
 esri search
 </div> -->
-        <div class="info">
-            <!-- <Info />  v-if="(band2_risk != null)"-->
+        <div class="info" v-if="(band2_risk != null)">
+            <!-- <Info />  -->
             Impact- <p id="band2_risk">{{band2_risk}}</p>
            
 
         </div>
-        <div class="info2" > 
-            <!-- <Info />  v-if="(band3_risk != null)" to be returned-->
+        <div class="info2" v-if="(band3_risk != null)" > 
+            <!-- <Info />   to be returned-->
             Impact- <p id="band3_risk">{{band3_risk}}</p>
            
 
         </div>
-        <div class="info3"  >
-            <!-- <Info /> v-if="(band4_risk != null)" -->
+        <div class="info3" v-if="(band4_risk != null)" >
+            <!-- <Info />  -->
             Impact- <p id="band4_risk">{{band4_risk}}</p>
            
            
@@ -228,6 +228,7 @@ let group = ref(null)
 let editableLayers = ref(null) //draw control
 let base_map_ctrl_selections= ref(false) 
 let base_map_ctrl_cliked = ref(false)
+let search_marker = ref(null)
 
 const notification = useNotification()
 notification.notify({
@@ -269,9 +270,6 @@ const mapboxSatellite =  L.tileLayer(
        }
      );
 
-
-
-
      //hooks
 onMounted( () => {
 
@@ -303,13 +301,7 @@ map = L.map("map", {
 
 
 const provider = new OpenStreetMapProvider();
-
-
-
-const searchControl = new GeoSearchControl({
-  provider: provider,
-  stle: 'bar',
-  marker: {
+search_marker.value = {
     // optional: L.Marker    - default L.Icon.Default
     icon: new L.icon({
       iconUrl: "/src/assets/plant.svg",
@@ -317,7 +309,14 @@ const searchControl = new GeoSearchControl({
       iconAnchor: [15,15]
     }),
     draggable: false,
-  },
+  }
+
+
+
+const searchControl = new GeoSearchControl({
+  provider: provider,
+  stle: 'bar',
+  marker: search_marker.value,
   popupFormat: ({ query, result }) => result.label,
   resultFormat: ({ result}) => result.label
   //  console.log(result, 'result')
@@ -470,6 +469,7 @@ const getClickedBand4 = () => {
 const getClickedLatLon = () => {
   latlon.value = store.latlon
    if(group.value !== null)group.value.clearLayers()
+  //  if(search_marker.value !== null)search_marker.value.clearLayers()
   group.value = L.layerGroup().addTo(map);
   marker.value = L.icon({
                                                 iconUrl: "/src/assets/plant.svg",
@@ -795,11 +795,11 @@ zoomed_coord.addTo(myFGMarker)
             allowIntersection: false, // Restricts shapes to simple polygons
             showArea: true,
             drawError: {
-              color: "#e1e100", // Color the shape will turn when intersects
+              color: "#ff0000", // Color the shape will turn when intersects
               message: "<strong>Oh snap!<strong> you can't draw that!", // Message that will show when intersect
             },
             shapeOptions: {
-              color: "black",
+              color: "#ff0000",
               fillColor: "none",
             },
           },

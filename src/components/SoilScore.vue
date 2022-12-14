@@ -140,7 +140,7 @@ border-radius: 9px;
     top: 6.5vh;
     width: 34px;
   padding:2px 10px 2px 10px;
-  font-family: 'Inter';
+  
 font-style: normal;
 font-weight: 600;
 font-size: 14px;
